@@ -115,7 +115,9 @@ A: Convention. At Leaping Gorilla we stick to the rule that each test class test
 ####Q: How do I control the ordering of my ```Given``` methods?
 A: Use the optional ```Order``` property at the point of decoration like:
 
-```[Given(Order=2)]```
+```
+[Given(Order=2)] 
+```
 
 ####Q: How do I mock a dependency that is a concrete class?
 A: The short answer is: You can't. The longer answer is: you can override the ```CreateManualDependencies``` method and substitute your own mock object there but we cannot generate an automatic mock. This is down to the nature of the .Net framework and short of using an expensive tool like TypeMock or JustMock itisn't going to change. Take it instead as an opportunity to do some glorious refactoring to break that concrete dependency into an interface.
