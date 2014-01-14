@@ -26,7 +26,7 @@ Enough of the introductions, lets look at how it works.
 Quick Sample
 ============
 
-```
+```CSHARP
 public class WhenTestingStubbing : WhenTestingTheBehaviourOf
 {
   [ItemUnderTest]
@@ -84,7 +84,9 @@ LeapingGorilla.Testing starts by locating all of our Dependencies, creating a mo
 
 From here we look for any methods marked with a ```GivenAttribute```. You can have as many Given methods as you want (zero, one or more). LeapingGorilla.Testing will find and execute each in turn. The order it will do so is undefined so if you need to be specific on the order that we call them use the optional Order property like:
 
-```[Given(Order = 1)]```
+```CSHARP
+[Given(Order = 1)]
+```
 
 You should use your ```Given``` methods to setup your stubbing in dependencies. We leverage NSubstitute for this so take a look at [the NSubstitute website](http://nsubstitute.github.io/). With our given methods executed the framework then finds your optional ```When``` method. You may have zero or one method marked with a ```WhenAttribute```. If one is found it will be called and at this point we hand over to the NUnit framework to assert each of yor test cases. 
 
@@ -115,7 +117,7 @@ A: Convention. At Leaping Gorilla we stick to the rule that each test class test
 ####Q: How do I control the ordering of my ```Given``` methods?
 A: Use the optional ```Order``` property at the point of decoration like:
 
-```
+```CSHARP
 [Given(Order=2)] 
 ```
 
