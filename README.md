@@ -3,6 +3,15 @@ What is it
 
 LeapingGorilla.Testing is an attribute based framework for BDD style Given/When/Then unit testing without the ceremony.
 
+Getting It
+==========
+
+The LeapingGorilla.Testing is now available on NuGet. Get it using:
+
+```PowerShell
+PM> install-package LeapingGorilla.Testing
+```
+
 Philosophy
 ==========
 
