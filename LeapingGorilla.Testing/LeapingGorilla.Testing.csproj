@@ -40,18 +40,23 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release-Net45\LeapingGorilla.Testing.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net40|AnyCPU'">
     <OutputPath>bin\Release-Net40\</OutputPath>
+	  <DebugType>pdbonly</DebugType>
     <DefineConstants>NET40</DefineConstants>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <Optimize>true</Optimize>
+    <DocumentationFile>bin\Release-Net40\LeapingGorilla.Testing.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net35|AnyCPU'">
     <OutputPath>bin\Release-Net35\</OutputPath>
+	  <DebugType>pdbonly</DebugType>
     <DefineConstants>NET35</DefineConstants>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <Optimize>true</Optimize>
+    <DocumentationFile>bin\Release-Net35\LeapingGorilla.Testing.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup Condition="'$(Configuration)|$(Platform)' != 'Release-Net35|AnyCPU'">
     <Reference Include="NSubstitute">
@@ -60,10 +65,10 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-	  <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-		  <SpecificVersion>False</SpecificVersion>
-		  <HintPath>..\LIB\FastMember\FastMember.dll</HintPath>
-	  </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\FastMember\FastMember.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,10 +83,10 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-	  <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-		  <SpecificVersion>False</SpecificVersion>
-		  <HintPath>..\LIB\FastMember\Net35\FastMember.dll</HintPath>
-	  </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\FastMember\Net35\FastMember.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />

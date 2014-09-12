@@ -31,25 +31,25 @@ From these needs LeapingGorilla.Testing was born.</description>
 		</dependencies>
     </metadata>
     <files>
-		<file src="bin\Release\net45\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
-		<file src="bin\Release\net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release\net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
-		<file src="bin\Release\net45\FastMember.dll" target="lib\net45\FastMember.dll" />
-		<file src="bin\Release\net45\FastMember.pdb" target="lib\net45\FastMember.pdb" />
-		<file src="bin\Release\net45\FastMember.xml" target="lib\net45\FastMember.xml" />
+		<file src="bin\Release-Net45\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release-Net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release-Net45\FastMember.dll" target="lib\net45\FastMember.dll" />
+		<file src="bin\Release-Net45\FastMember.pdb" target="lib\net45\FastMember.pdb" />
+		<file src="bin\Release-Net45\FastMember.xml" target="lib\net45\FastMember.xml" />
 		
-		<file src="bin\Release\net40\LeapingGorilla.Testing.dll" target="lib\net40\LeapingGorilla.Testing.dll" />
-		<file src="bin\Release\net40\LeapingGorilla.Testing.pdb" target="lib\net40\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release\net40\LeapingGorilla.Testing.xml" target="lib\net40\LeapingGorilla.Testing.xml" />
-		<file src="bin\Release\net45\FastMember.dll" target="lib\net40\FastMember.dll" />
-		<file src="bin\Release\net45\FastMember.pdb" target="lib\net40\FastMember.pdb" />
-		<file src="bin\Release\net45\FastMember.xml" target="lib\net40\FastMember.xml" />
+		<file src="bin\Release-Net40\LeapingGorilla.Testing.dll" target="lib\net40\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release-Net40\LeapingGorilla.Testing.pdb" target="lib\net40\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release-Net40\LeapingGorilla.Testing.xml" target="lib\net40\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release-Net40\FastMember.dll" target="lib\net40\FastMember.dll" />
+		<file src="bin\Release-Net40\FastMember.pdb" target="lib\net40\FastMember.pdb" />
+		<file src="bin\Release-Net40\FastMember.xml" target="lib\net40\FastMember.xml" />
 		
-		<file src="bin\Release\net35\LeapingGorilla.Testing.dll" target="lib\net35\LeapingGorilla.Testing.dll" />
-		<file src="bin\Release\net35\LeapingGorilla.Testing.pdb" target="lib\net35\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release\net35\LeapingGorilla.Testing.xml" target="lib\net35\LeapingGorilla.Testing.xml" />
-		<file src="bin\Release\net45\FastMember.dll" target="lib\net35\FastMember.dll" />
-		<file src="bin\Release\net45\FastMember.pdb" target="lib\net35\FastMember.pdb" />
-		<file src="bin\Release\net45\FastMember.xml" target="lib\net35\FastMember.xml" />
+		<file src="bin\Release-Net35\LeapingGorilla.Testing.dll" target="lib\net35\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release-Net35\LeapingGorilla.Testing.pdb" target="lib\net35\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release-Net35\LeapingGorilla.Testing.xml" target="lib\net35\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release-Net35\FastMember.dll" target="lib\net35\FastMember.dll" />
+		<file src="bin\Release-Net35\FastMember.pdb" target="lib\net35\FastMember.pdb" />
+		<file src="bin\Release-Net35\FastMember.xml" target="lib\net35\FastMember.xml" />
     </files>
 </package>
