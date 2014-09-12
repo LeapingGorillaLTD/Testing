@@ -29,7 +29,7 @@ namespace LeapingGorilla.Testing.Exceptions
 					expectedType, 
 					expectedName, 
 					index, 
-					String.Join(", ", allParams.Select(pi => String.Format("{0} ({1})", pi.Name, pi.ParameterType)))  )) 
+					String.Join(", ", allParams.Select(pi => String.Format("{0} ({1})", pi.Name, pi.ParameterType)).ToArray())  )) 
 		{
 		}
 	}

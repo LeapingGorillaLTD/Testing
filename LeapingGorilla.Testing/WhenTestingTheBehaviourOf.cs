@@ -62,7 +62,12 @@ namespace LeapingGorilla.Testing
 
 				// Single when method - invoke it after checking it's return and parameters
 			var method = whenMethods.Single();
-			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
+
+#if NET35
+			if (method.ReturnType != typeof(void))
+#else
+				if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
+#endif
 			{
 				throw new WhenMethodsMustBeVoidOrTaskException(method.Name);
 			}
@@ -72,6 +77,9 @@ namespace LeapingGorilla.Testing
 				throw new WhenMethodMayNotHaveParametersException(method.Name);
 			}
 
+#if NET35
+			method.Invoke(this, null);
+#else
 			if (method.ReturnType == typeof(Task))
 			{
 				var task = (Task)method.Invoke(this, null);
@@ -81,6 +89,7 @@ namespace LeapingGorilla.Testing
 			{
 				method.Invoke(this, null);
 			}
+#endif
 		}
 
 		private void ExecuteGivenMethods()
@@ -190,7 +199,11 @@ namespace LeapingGorilla.Testing
 			var dependencies = new List<Dependency>();
 
 			var props = GetPropertiesWithAttribute(attributeType);
+#if NET45
 			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, prop.GetValue(this))));
+#else
+			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, prop.GetValue(this, null))));
+#endif
 
 			var fields = GetFieldsWithAttribute(attributeType);
 			dependencies.AddRange(fields.Select(field => new Dependency(field.Name, field.FieldType, field.GetValue(this))));
@@ -215,7 +228,11 @@ namespace LeapingGorilla.Testing
 				.Where(mi => mi.IsDefined(attributeType, true));
 		}
 
+#if NET45
 		private static ConstructorInfo GetPreferredConstructor(Type itemUnderTestType, IReadOnlyCollection<Dependency> dependencies)
+#else
+		private static ConstructorInfo GetPreferredConstructor(Type itemUnderTestType, ICollection<Dependency> dependencies)
+#endif
 		{
 			var constructors = itemUnderTestType.GetConstructors();
 

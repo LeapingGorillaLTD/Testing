@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>LeapingGorilla.Testing</id>
+        <version>$version$</version>
+        <title>Leaping Gorilla - Testing BDD Framework</title>
+        <authors>Leaping Gorilla LTD</authors>
+        <owners />
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction</summary>
+        <description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimal friction.
+        
+ We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
+
+1. Must support constructor-based dependency injection
+2. Must have the ability to automatically mock any dependencies we wish to use with our item under test
+3. Must have the ability to override automatic mocking should the need arise
+4. Must support a clean syntax for stubbing method calls on our depndencies
+5. Must have a clean BDD style Given/When/Then flow
+
+From these needs LeapingGorilla.Testing was born.</description>
+		<projectUrl>https://bitbucket.org/Gary_H/leapinggorilla.testing/</projectUrl>
+		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+		<copyright>Leaping Gorilla LTD</copyright>
+		<tags>BDD Testing</tags>
+		<dependencies>
+			<group>
+				<dependency id="NUnit" version="2.6.3" />
+				<dependency id="NSubstitute" version="1.7.2.0" />
+			</group>
+		</dependencies>
+    </metadata>
+    <files>
+		<file src="bin\Release\net45\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release\net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release\net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release\net45\FastMember.dll" target="lib\net45\FastMember.dll" />
+		<file src="bin\Release\net45\FastMember.pdb" target="lib\net45\FastMember.pdb" />
+		<file src="bin\Release\net45\FastMember.xml" target="lib\net45\FastMember.xml" />
+		
+		<file src="bin\Release\net40\LeapingGorilla.Testing.dll" target="lib\net40\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release\net40\LeapingGorilla.Testing.pdb" target="lib\net40\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release\net40\LeapingGorilla.Testing.xml" target="lib\net40\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release\net45\FastMember.dll" target="lib\net40\FastMember.dll" />
+		<file src="bin\Release\net45\FastMember.pdb" target="lib\net40\FastMember.pdb" />
+		<file src="bin\Release\net45\FastMember.xml" target="lib\net40\FastMember.xml" />
+		
+		<file src="bin\Release\net35\LeapingGorilla.Testing.dll" target="lib\net35\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release\net35\LeapingGorilla.Testing.pdb" target="lib\net35\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release\net35\LeapingGorilla.Testing.xml" target="lib\net35\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release\net45\FastMember.dll" target="lib\net35\FastMember.dll" />
+		<file src="bin\Release\net45\FastMember.pdb" target="lib\net35\FastMember.pdb" />
+		<file src="bin\Release\net45\FastMember.xml" target="lib\net35\FastMember.xml" />
+    </files>
+</package>

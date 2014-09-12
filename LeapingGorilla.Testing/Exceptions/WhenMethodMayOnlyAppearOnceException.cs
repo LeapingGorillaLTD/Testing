@@ -15,6 +15,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
@@ -23,7 +24,7 @@ namespace LeapingGorilla.Testing.Exceptions
 		public WhenMethodMayOnlyAppearOnceException(IEnumerable<string> methodNames) :
 			base(
 			String.Format("Only a single method may be marked with the [When] attribute. You have marked the methods: {0}",
-				String.Join(", ", methodNames)))
+				String.Join(", ", methodNames.ToArray())))
 		{
 			
 		}

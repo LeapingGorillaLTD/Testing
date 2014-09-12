@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿#if NET45
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Attributes;
 using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Tests
 {
+
 	public class WhenTestingAnAsyncMethod : WhenTestingTheBehaviourOf
 	{
 		private int _result;
@@ -34,3 +36,4 @@ namespace LeapingGorilla.Testing.Tests
 		}
 	}
 }
+#endif
