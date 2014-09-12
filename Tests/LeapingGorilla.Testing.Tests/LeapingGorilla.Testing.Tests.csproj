@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WhenTestingAnAsyncMethod.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodThatHasAReturnType.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodWithParameters.cs" />
     <Compile Include="WhenTestingSetupWithTooManyWhenFields.cs" />

@@ -61,7 +61,7 @@
     <Compile Include="Exceptions\CannotMockPrivateFieldsException.cs" />
     <Compile Include="Exceptions\WhenMethodMayNotHaveParametersException.cs" />
     <Compile Include="Exceptions\WhenMethodMayOnlyAppearOnceException.cs" />
-    <Compile Include="Exceptions\WhenMethodsMustBeVoidException.cs" />
+    <Compile Include="Exceptions\WhenMethodsMustBeVoidOrTaskException.cs" />
     <Compile Include="Exceptions\DependencyMismatchException.cs" />
     <Compile Include="Exceptions\GivenMethodMayNotHaveParametersException.cs" />
     <Compile Include="Exceptions\GivenMethodsMustBeVoidException.cs" />

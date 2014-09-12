@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using FastMember;
 using LeapingGorilla.Testing.Attributes;
 using LeapingGorilla.Testing.Exceptions;
@@ -60,10 +61,10 @@ namespace LeapingGorilla.Testing
 			}
 
 				// Single when method - invoke it after checking it's return and parameters
-			var method = whenMethods.First();
-			if (method.ReturnType != typeof(void))
+			var method = whenMethods.Single();
+			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
 			{
-				throw new WhenMethodsMustBeVoidException(method.Name);
+				throw new WhenMethodsMustBeVoidOrTaskException(method.Name);
 			}
 
 			if (method.GetParameters().Any())
@@ -71,7 +72,15 @@ namespace LeapingGorilla.Testing
 				throw new WhenMethodMayNotHaveParametersException(method.Name);
 			}
 
-			method.Invoke(this, null);
+			if (method.ReturnType == typeof(Task))
+			{
+				var task = (Task)method.Invoke(this, null);
+				task.Wait();
+			}
+			else
+			{
+				method.Invoke(this, null);
+			}
 		}
 
 		private void ExecuteGivenMethods()
