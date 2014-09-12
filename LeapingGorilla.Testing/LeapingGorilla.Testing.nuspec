@@ -19,7 +19,7 @@
 5. Must have a clean BDD style Given/When/Then flow
 
 From these needs LeapingGorilla.Testing was born.</description>
-		<projectUrl>https://bitbucket.org/Gary_H/leapinggorilla.testing/</projectUrl>
+		<projectUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing</projectUrl>
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
 		<copyright>Leaping Gorilla LTD</copyright>
 		<tags>BDD Testing</tags>
