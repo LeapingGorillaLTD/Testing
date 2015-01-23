@@ -133,6 +133,17 @@ A: Use the optional ```Order``` property at the point of decoration like:
 ####Q: How do I mock a dependency that is a concrete class?
 A: The short answer is: You can't. The longer answer is: you can override the ```CreateManualDependencies``` method and substitute your own mock object there but we cannot generate an automatic mock. This is down to the nature of the .Net framework and short of using an expensive tool like TypeMock or JustMock itisn't going to change. Take it instead as an opportunity to do some glorious refactoring to break that concrete dependency into an interface.
 
+####Q: How do I test an async method?
+A: Make sure that your method returns Task, not void and it will Just Work (tm) like:
+
+```CSHARP
+[When]
+public async Task SomethingAsyncHappens()
+{
+  _result = await MyAsyncThing();
+}
+```
+
 ####Q: How do I contribute?
 A: Fork and submit a pull request! For your pull request to be considered it should include tests as well as functional code. 
 
