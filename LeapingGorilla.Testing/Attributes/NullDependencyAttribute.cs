@@ -18,11 +18,10 @@ using System;
 namespace LeapingGorilla.Testing.Attributes
 {
 	/// <summary>
-	/// Marks a property or field which should be Mocked using NSubstitute but which is not a direct dependency of the Item Under Test.
-	/// This class cannot be inherited.
+	/// Marks a field or property as a Dependency which should be instantiated as Null. This class cannot be inherited.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-	public sealed class MockAttribute : Attribute
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+	public sealed class NullDependencyAttribute : Attribute
 	{
 	}
 }

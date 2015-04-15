@@ -18,6 +18,9 @@ using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Attributes
 {
+	/// <summary>
+	/// Marks a method as being an assertion about the outcome of a test. This class cannot be inherited.
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 	public sealed class ThenAttribute : TestAttribute
 	{

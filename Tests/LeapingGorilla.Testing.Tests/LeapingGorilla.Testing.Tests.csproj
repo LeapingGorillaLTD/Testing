@@ -34,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net45|AnyCPU'">
     <OutputPath>bin\Release-Net45\</OutputPath>
     <DefineConstants>TRACE;NET45</DefineConstants>
-	  <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,14 +44,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net40|AnyCPU'">
     <OutputPath>bin\Release-Net40\</OutputPath>
     <DefineConstants>NET40</DefineConstants>
-  <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net35|AnyCPU'">
     <OutputPath>bin\Release-Net35\</OutputPath>
     <DefineConstants>NET35</DefineConstants>
-  <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
-	<ItemGroup Condition="'$(Configuration)|$(Platform)' != 'Release-Net35|AnyCPU'">
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' != 'Release-Net35|AnyCPU'">
     <Reference Include="NSubstitute">
       <HintPath>..\..\packages\NSubstitute.1.7.0.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
@@ -64,20 +64,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
   </ItemGroup>
-
-	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net35|AnyCPU'">
-		<Reference Include="NSubstitute">
-			<HintPath>..\..\packages\NSubstitute.1.7.0.0\lib\NET35\NSubstitute.dll</HintPath>
-		</Reference>
-		<Reference Include="nunit.framework">
-			<HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-		</Reference>
-		<Reference Include="System" />
-		<Reference Include="System.Core" />
-		<Reference Include="System.Data.DataSetExtensions" />
-		<Reference Include="System.Data" />
-	</ItemGroup>
-	
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net35|AnyCPU'">
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\packages\NSubstitute.1.7.0.0\lib\NET35\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="WhenTestingAnAsyncMethod.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodThatHasAReturnType.cs" />
@@ -104,6 +102,7 @@
     <Compile Include="WhenTestingMocking.cs" />
     <Compile Include="WhenTestingGivenMethodsWithDifferentAccessLevels.cs" />
     <Compile Include="WhenTestingStubbing.cs" />
+    <Compile Include="WhenTestingANullDependency.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LeapingGorilla.Testing\LeapingGorilla.Testing.csproj">

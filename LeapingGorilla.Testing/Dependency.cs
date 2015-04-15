@@ -43,18 +43,27 @@ namespace LeapingGorilla.Testing
 		private static readonly MethodInfo MockingMethod = typeof(Substitute)
 															.GetMethods()
 															.First(m => m.Name == "For" && m.IsGenericMethod && m.GetGenericArguments().Count() == 1);
-		
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Dependency" /> class.
 		/// </summary>
 		/// <param name="name">The name.</param>
 		/// <param name="dependencyType">Type of the dependency.</param>
+		/// <param name="alwaysNull">if set to <c>true</c> the value of this dependency will always be null.</param>
 		/// <param name="defaultValue">The default value of the dependency. If null a substitute will be created.</param>
-		public Dependency(string name, Type dependencyType, object defaultValue = null)
+		public Dependency(string name, Type dependencyType, bool alwaysNull = false, object defaultValue = null)
 		{
 			Name = name;
 			Type = dependencyType;
-			Value = defaultValue ?? CreateMock(dependencyType);
+
+			if (alwaysNull)
+			{
+				Value = null;
+			}
+			else
+			{
+				Value = defaultValue ?? CreateMock(dependencyType);
+			}
 		}
 
 		/// <summary>

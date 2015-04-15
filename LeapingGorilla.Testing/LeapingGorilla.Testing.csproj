@@ -44,7 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net40|AnyCPU'">
     <OutputPath>bin\Release-Net40\</OutputPath>
-	  <DebugType>pdbonly</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DefineConstants>NET40</DefineConstants>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <Optimize>true</Optimize>
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net35|AnyCPU'">
     <OutputPath>bin\Release-Net35\</OutputPath>
-	  <DebugType>pdbonly</DebugType>
+    <DebugType>pdbonly</DebugType>
     <DefineConstants>NET35</DefineConstants>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <Optimize>true</Optimize>
@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\NullDependencyAttribute.cs" />
     <Compile Include="Attributes\DependencyAttribute.cs" />
     <Compile Include="Attributes\GivenAttribute.cs" />
     <Compile Include="Attributes\ItemUnderTestAttribute.cs" />
@@ -127,7 +128,6 @@
   </Target>
   -->
   <Target Name="AfterBuild">
-    
   </Target>
   <Target Name="Package">
     <!-- Load up the information from the assembly -->
@@ -135,7 +135,6 @@
       <Output TaskParameter="Assemblies" ItemName="OutputAssemblyInfo" />
     </GetAssemblyIdentity>
     <Message Text="Info: %(OutputAssemblyInfo.Version)" />
-    
     <!-- Ensure the Package directory exists for this project -->
     <RemoveDir Directories="NuGet" />
     <MakeDir Directories="NuGet" />

@@ -17,6 +17,9 @@ using System;
 
 namespace LeapingGorilla.Testing.Attributes
 {
+	/// <summary>
+	/// Marks a field or property as a Dependency which should be mocked using NSubstitute. This class cannot be inherited.
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
 	public sealed class DependencyAttribute : Attribute
 	{

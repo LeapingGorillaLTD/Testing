@@ -17,6 +17,11 @@ using System;
 
 namespace LeapingGorilla.Testing.Attributes
 {
+	/// <summary>
+	/// Marks the item that is being tested. The property or field decorated with this attribute will be instantiated 
+	/// with the best fit constructor that includes as many provided Dependencies as possible using <see cref="DependencyAttribute"/>.
+	/// This class cannot be inherited.
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
 	public sealed class ItemUnderTestAttribute : Attribute
 	{

@@ -132,6 +132,8 @@ namespace LeapingGorilla.Testing
 				// Create mocks and dependencies
 			CreateManualDependencies();
 			var dependencies = CreateAndAssignPropertiesOrFieldsWithAttribute(accessor, typeof(DependencyAttribute));
+			dependencies.AddRange(CreateAndAssignPropertiesOrFieldsWithAttribute(accessor, typeof(NullDependencyAttribute)));
+
 			CreateAndAssignPropertiesOrFieldsWithAttribute(accessor, typeof(MockAttribute));
 
 				// It is invalid to have dependencies but no item under test
@@ -200,13 +202,13 @@ namespace LeapingGorilla.Testing
 
 			var props = GetPropertiesWithAttribute(attributeType);
 #if NET45
-			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, prop.GetValue(this))));
+			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, attributeType == typeof(NullDependencyAttribute), prop.GetValue(this))));
 #else
-			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, prop.GetValue(this, null))));
+			dependencies.AddRange(props.Select(prop => new Dependency(prop.Name, prop.PropertyType, attributeType == typeof(NullDependencyAttribute), prop.GetValue(this, null))));
 #endif
 
 			var fields = GetFieldsWithAttribute(attributeType);
-			dependencies.AddRange(fields.Select(field => new Dependency(field.Name, field.FieldType, field.GetValue(this))));
+			dependencies.AddRange(fields.Select(field => new Dependency(field.Name, field.FieldType, attributeType == typeof(NullDependencyAttribute), field.GetValue(this))));
 
 			return dependencies;
 		}

@@ -17,6 +17,9 @@ using System;
 
 namespace LeapingGorilla.Testing.Attributes
 {
+	/// <summary>
+	/// Marks a method as being the entrypoint for a test. This class cannot be inherited.
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 	public sealed class WhenAttribute : Attribute
 	{
