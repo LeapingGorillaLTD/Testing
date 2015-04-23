@@ -13,59 +13,49 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
+using System;
 using LeapingGorilla.Testing.Attributes;
+using LeapingGorilla.Testing.Exceptions;
 using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Tests
 {
-	public class WhenTestingMultipleGivenMethods : WhenTestingTheBehaviourOf
+	public class WhenTestingNullDdependencyInjectionOnNonNullableType : WhenTestingTheBehaviourOf
 	{
-		private int _given1 = -1;
-		private int _given2 = -1;
-		private int _given3 = -1;
+		private Exception _setupException;
 
-		private int _givenCounter;
+		[NullDependency]
+		public int Item;
 
-		[Given(Order = 3)]
-		public void HaveGivenThree()
+		public override void Setup()
 		{
-			_given3 = ++_givenCounter;
-		}
-
-		[Given(Order = 1)]
-		public void HaveGivenOne()
-		{
-			_given1 = ++_givenCounter;
-		}
-
-		[Given(Order = 2)]
-		public void HaveGivenTwo()
-		{
-			_given2 = ++_givenCounter;
+			try
+			{
+				base.Setup();
+			}
+			catch (Exception ex)
+			{
+				_setupException = ex;
+			}
 		}
 
 		[Then]
-		public void TheCounterShouldBeSetAtThree()
+		public void SetupShouldThrowAnException()
 		{
-			Assert.That(_givenCounter, Is.EqualTo(3));
+			Assert.That(_setupException, Is.Not.Null);
 		}
 
 		[Then]
-		public void Given1ShouldBe1()
+		public void MockShouldNotBeCreated()
 		{
-			Assert.That(_given1, Is.EqualTo(1));
+			Assert.That(Item, Is.EqualTo(default(int)));
 		}
 
 		[Then]
-		public void Given2ShouldBe2()
+		public void SetupExceptionShouldBeCannotMarkNonNullableTypeAsNullDependencyException()
 		{
-			Assert.That(_given2, Is.EqualTo(2));
-		}
-
-		[Then]
-		public void Given3ShouldBe3()
-		{
-			Assert.That(_given3, Is.EqualTo(3));
+			Assert.That(_setupException, Is.TypeOf<CannotMarkNonNullableTypeAsNullDependencyException>());
 		}
 	}
 }

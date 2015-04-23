@@ -58,6 +58,11 @@ namespace LeapingGorilla.Testing
 
 			if (alwaysNull)
 			{
+				if (dependencyType.IsValueType && (Nullable.GetUnderlyingType(dependencyType)) == null)
+				{
+					throw new CannotMarkNonNullableTypeAsNullDependencyException(name);
+				}
+
 				Value = null;
 			}
 			else

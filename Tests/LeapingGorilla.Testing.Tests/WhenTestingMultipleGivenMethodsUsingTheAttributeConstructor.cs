@@ -18,7 +18,7 @@ using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Tests
 {
-	public class WhenTestingMultipleGivenMethods : WhenTestingTheBehaviourOf
+	public class WhenTestingMultipleGivenMethodsUsingTheAttributeConstructor : WhenTestingTheBehaviourOf
 	{
 		private int _given1 = -1;
 		private int _given2 = -1;
@@ -26,19 +26,19 @@ namespace LeapingGorilla.Testing.Tests
 
 		private int _givenCounter;
 
-		[Given(Order = 3)]
+		[Given(3)]
 		public void HaveGivenThree()
 		{
 			_given3 = ++_givenCounter;
 		}
 
-		[Given(Order = 1)]
+		[Given(1)]
 		public void HaveGivenOne()
 		{
 			_given1 = ++_givenCounter;
 		}
 
-		[Given(Order = 2)]
+		[Given(2)]
 		public void HaveGivenTwo()
 		{
 			_given2 = ++_givenCounter;

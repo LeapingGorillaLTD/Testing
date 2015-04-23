@@ -102,6 +102,7 @@
     <Compile Include="Attributes\ThenAttribute.cs" />
     <Compile Include="Attributes\WhenAttribute.cs" />
     <Compile Include="Dependency.cs" />
+    <Compile Include="Exceptions\CannotMarkNonNullableTypeAsNullDependencyException.cs" />
     <Compile Include="Exceptions\CannotMockPrivateFieldsException.cs" />
     <Compile Include="Exceptions\WhenMethodMayNotHaveParametersException.cs" />
     <Compile Include="Exceptions\WhenMethodMayOnlyAppearOnceException.cs" />
