@@ -81,7 +81,7 @@
     <Compile Include="WhenTestingAnAsyncMethod.cs" />
     <Compile Include="WhenTestingANullDependencyForNullableValueType.cs" />
     <Compile Include="WhenTestingMultipleGivenMethodsUsingTheAttributeConstructor.cs" />
-    <Compile Include="WhenTestingNullDdependencyInjectionOnNonNullableType.cs" />
+    <Compile Include="WhenTestingNullDependencyInjectionOnNonNullableType.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodThatHasAReturnType.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodWithParameters.cs" />
     <Compile Include="WhenTestingSetupWithTooManyWhenFields.cs" />

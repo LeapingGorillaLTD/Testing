@@ -21,7 +21,7 @@ using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Tests
 {
-	public class WhenTestingNullDdependencyInjectionOnNonNullableType : WhenTestingTheBehaviourOf
+	public class WhenTestingNullDependencyInjectionOnNonNullableType : WhenTestingTheBehaviourOf
 	{
 		private Exception _setupException;
 
