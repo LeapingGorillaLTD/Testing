@@ -18,10 +18,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using FastMember;
+using LeapingGorilla.Testing.FastMember;
 using LeapingGorilla.Testing.Attributes;
 using LeapingGorilla.Testing.Exceptions;
 using NUnit.Framework;
+using TypeAccessor = LeapingGorilla.Testing.FastMember.TypeAccessor;
 
 namespace LeapingGorilla.Testing
 {

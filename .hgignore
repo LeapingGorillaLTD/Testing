@@ -1,2 +1,3 @@
 syntax: glob
 LeapingGorilla.Testing/NuGet/*
+*.GhostDoc.*
