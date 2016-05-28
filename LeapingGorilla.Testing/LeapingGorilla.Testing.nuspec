@@ -34,13 +34,9 @@ From these needs LeapingGorilla.Testing was born.</description>
 		<file src="bin\Release-Net45\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
 		<file src="bin\Release-Net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
 		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
-		<file src="bin\Release-Net45\FastMember.dll" target="lib\net45\FastMember.dll" />
-		<file src="bin\Release-Net45\FastMember.xml" target="lib\net45\FastMember.xml" />
 		
 		<file src="bin\Release-Net40\LeapingGorilla.Testing.dll" target="lib\net40\LeapingGorilla.Testing.dll" />
 		<file src="bin\Release-Net40\LeapingGorilla.Testing.pdb" target="lib\net40\LeapingGorilla.Testing.pdb" />
 		<file src="bin\Release-Net40\LeapingGorilla.Testing.xml" target="lib\net40\LeapingGorilla.Testing.xml" />
-		<file src="bin\Release-Net40\FastMember.dll" target="lib\net40\FastMember.dll" />
-		<file src="bin\Release-Net40\FastMember.xml" target="lib\net40\FastMember.xml" />
     </files>
 </package>
