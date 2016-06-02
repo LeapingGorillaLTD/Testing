@@ -240,7 +240,7 @@ namespace LeapingGorilla.Testing.FastMember
                 }
             }
         }
-        private static bool IsFullyPublic(Type type, PropertyInfo[] props, bool allowNonPublicAccessors)
+        private static bool IsFullyPublic(Type type, PropertyInfo[] props, FieldInfo[] fields, bool allowNonPublicAccessors)
         {
             while (type.IsNestedPublic) type = type.DeclaringType;
             if (!type.IsPublic) return false;
@@ -251,6 +251,11 @@ namespace LeapingGorilla.Testing.FastMember
                 {
                     if (props[i].GetGetMethod(true) != null && props[i].GetGetMethod(false) == null) return false; // non-public getter
                     if (props[i].GetSetMethod(true) != null && props[i].GetSetMethod(false) == null) return false; // non-public setter
+                }
+
+				for (int i = 0; i < fields.Length; i++)
+                {
+                    if (fields[i].IsPrivate) return false; // non-public field
                 }
             }
 
@@ -286,7 +291,7 @@ namespace LeapingGorilla.Testing.FastMember
                 ctor = type.GetConstructor(Type.EmptyTypes);
             }
             ILGenerator il;
-            if (!IsFullyPublic(type, props, allowNonPublicAccessors))
+            if (!IsFullyPublic(type, props, fields, allowNonPublicAccessors))
             {
                 DynamicMethod dynGetter = new DynamicMethod(type.FullName + "_get", typeof(object), new Type[] { typeof(int), typeof(object) }, type, true),
                               dynSetter = new DynamicMethod(type.FullName + "_set", null, new Type[] { typeof(int), typeof(object), typeof(object) }, type, true);

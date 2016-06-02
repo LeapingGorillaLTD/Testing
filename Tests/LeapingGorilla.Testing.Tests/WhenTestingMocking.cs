@@ -13,6 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
+using System;
 using LeapingGorilla.Testing.Attributes;
 using LeapingGorilla.Testing.Tests.Mocks;
 using NUnit.Framework;
@@ -21,12 +23,39 @@ namespace LeapingGorilla.Testing.Tests
 {
 	public class WhenTestingMocking : WhenTestingTheBehaviourOf
 	{
+		private Exception _setupException;
+
+		[Mock]
+		private IMockLogger privateFieldMock;
+		
+		[Mock]
+		private IMockLogger PrivatePropertyMock { get; set; }
+
 		[Mock]
 		public IMockLogger publicFieldMock;
 
 		[Mock]
 		public IMockLogger PublicPropertyMock { get; set; }
 
+		[Mock]
+		protected IMockLogger protectedFieldMock;
+
+		[Mock]
+		protected IMockLogger ProtectedPropertyMock { get; set; }
+
+		public override void Setup()
+		{
+			try
+			{
+				base.Setup();
+			}
+			catch (Exception ex)
+			{
+				_setupException = ex;
+			}
+		}
+
+		
 		[Then]
 		public void PublicFieldMockShouldBeCreated()
 		{
@@ -37,6 +66,36 @@ namespace LeapingGorilla.Testing.Tests
 		public void PublicPropertyMockShouldBeCreated()
 		{
 			Assert.That(PublicPropertyMock, Is.Not.Null);
+		}
+
+		[Then]
+		public void ProtectedFieldMockShouldBeCreated()
+		{
+			Assert.That(protectedFieldMock, Is.Not.Null);
+		}
+
+		[Then]
+		public void ProtectedPropertyMockShouldBeCreated()
+		{
+			Assert.That(ProtectedPropertyMock, Is.Not.Null);
+		}
+
+		[Then]
+		public void PrivatePropertyMockShouldBeCreated()
+		{
+			Assert.That(PrivatePropertyMock, Is.Not.Null);
+		}
+
+		[Then]
+		public void PrivateFieldMockShouldBeCreated()
+		{
+			Assert.That(privateFieldMock, Is.Not.Null);
+		}
+
+		[Then]
+		public void ExceptionShouldNotBeRaised()
+		{
+			Assert.That(_setupException, Is.Null);
 		}
 	}
 }

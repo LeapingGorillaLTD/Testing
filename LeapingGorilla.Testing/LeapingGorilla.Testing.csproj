@@ -95,7 +95,6 @@
     <Compile Include="Attributes\WhenAttribute.cs" />
     <Compile Include="Dependency.cs" />
     <Compile Include="Exceptions\CannotMarkNonNullableTypeAsNullDependencyException.cs" />
-    <Compile Include="Exceptions\CannotMockPrivateFieldsException.cs" />
     <Compile Include="Exceptions\WhenMethodMayNotHaveParametersException.cs" />
     <Compile Include="Exceptions\WhenMethodMayOnlyAppearOnceException.cs" />
     <Compile Include="Exceptions\WhenMethodsMustBeVoidOrTaskException.cs" />
@@ -114,7 +113,9 @@
     <Compile Include="WhenTestingTheBehaviourOf.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

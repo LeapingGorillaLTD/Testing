@@ -88,7 +88,6 @@
     <Compile Include="WhenTestingMultipleGivenMethods.cs" />
     <Compile Include="WhenTestingSetupWithAGivenMethodThatHasAReturnType.cs" />
     <Compile Include="WhenTestingSetupWithAGivenMethodWithParameters.cs" />
-    <Compile Include="WhenTestingDependencyInjectionWithInvalidAccessLevelOnMock.cs" />
     <Compile Include="Mocks\ClassRaisingAnEvent.cs" />
     <Compile Include="Mocks\ClassWithMultipleParametersOfSameType.cs" />
     <Compile Include="Mocks\IMockEventRaiser.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenTestingAttemptingToMockAnInvalidType.cs" />
     <Compile Include="WhenTestingDependencyInjection.cs" />
-    <Compile Include="WhenTestingDependencyInjectionAgainstDifferentPrivacyLevels.cs" />
     <Compile Include="WhenTestingDependencyInjectionWithAField.cs" />
     <Compile Include="WhenTestingDependencyInjectionWithInvalidDependencies.cs" />
     <Compile Include="WhenTestingDependencyInjectionWithMissingDependencies.cs" />

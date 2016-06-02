@@ -184,14 +184,7 @@ namespace LeapingGorilla.Testing
 			var dependencies = BuildDependenciesForPropertiesOrFieldsWithAttributeType(attributeType);
 			foreach (var dep in dependencies)
 			{
-				try
-				{
-					accessor[this, dep.Name] = dep.Value;
-				}
-				catch (FieldAccessException)
-				{
-					throw new CannotMockPrivateFieldsException(dep.Name);
-				}
+				accessor[this, dep.Name] = dep.Value;
 			}
 
 			return dependencies;
