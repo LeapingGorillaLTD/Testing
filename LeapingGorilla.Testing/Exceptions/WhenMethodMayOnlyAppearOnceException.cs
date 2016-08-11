@@ -19,8 +19,13 @@ using System.Linq;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	///<summary>Exception raised if a class contains multiple [When] methods. This includes sub-classes</summary>
 	public class WhenMethodMayOnlyAppearOnceException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WhenMethodMayOnlyAppearOnceException"/> class.
+		/// </summary>
+		/// <param name="methodNames">The method names marked with the WhenAttribute.</param>
 		public WhenMethodMayOnlyAppearOnceException(IEnumerable<string> methodNames) :
 			base(
 			String.Format("Only a single method may be marked with the [When] attribute. You have marked the methods: {0}",

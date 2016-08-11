@@ -19,11 +19,20 @@ using System.Linq;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	/// <summary>Exception raised if we could not find a constructor with the same number of dependencies as we had available</summary>
 	public class NoMatchingConstructorFoundException : ApplicationException
 	{
 #if NET45
-		public NoMatchingConstructorFoundException(IReadOnlyCollection<Dependency> expectedDependencies) : 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NoMatchingConstructorFoundException"/> class.
+		/// </summary>
+		/// <param name="expectedDependencies">The expected dependencies.</param>
+		public NoMatchingConstructorFoundException(IReadOnlyCollection<Dependency> expectedDependencies) :
 #else
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NoMatchingConstructorFoundException"/> class.
+		/// </summary>
+		/// <param name="expectedDependencies">The expected dependencies.</param>
 		public NoMatchingConstructorFoundException(ICollection<Dependency> expectedDependencies) : 
 #endif
 			base(

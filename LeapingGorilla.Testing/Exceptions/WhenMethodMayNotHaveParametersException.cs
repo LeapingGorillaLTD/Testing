@@ -17,8 +17,13 @@ using System;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	///<summary>Exception raised if the [When] method takes any parameters</summary>
 	public class WhenMethodMayNotHaveParametersException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WhenMethodMayNotHaveParametersException"/> class.
+		/// </summary>
+		/// <param name="methodName">Name of the method.</param>
 		public WhenMethodMayNotHaveParametersException(string methodName) :
 			base(String.Format("The method {0} may not be marked as [When] - All [When] methods must not take any parameters", methodName))
 		{

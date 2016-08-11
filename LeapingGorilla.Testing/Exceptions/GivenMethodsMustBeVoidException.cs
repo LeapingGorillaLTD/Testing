@@ -17,8 +17,13 @@ using System;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	///<summary>Exception raised when a Given method exists which does not have a void return type</summary>
 	public class GivenMethodsMustBeVoidException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="GivenMethodsMustBeVoidException"/> class.
+		/// </summary>
+		/// <param name="methodName">Name of the method.</param>
 		public GivenMethodsMustBeVoidException(string methodName)
 			: base(String.Format("The method {0} cannot be marked with the [Given] attribute - all [Given] methods must be void", methodName))
 		{

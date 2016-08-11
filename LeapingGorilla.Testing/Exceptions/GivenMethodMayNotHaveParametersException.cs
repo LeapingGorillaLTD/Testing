@@ -17,8 +17,13 @@ using System;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	///<summary>Exception raised when a Given method exists which takes a parameter</summary>
 	public class GivenMethodMayNotHaveParametersException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="GivenMethodMayNotHaveParametersException"/> class.
+		/// </summary>
+		/// <param name="methodName">Name of the method.</param>
 		public GivenMethodMayNotHaveParametersException(string methodName) :
 			base(String.Format("The method {0} may not be marked as [Given] - All [Given] methods must not take any parameters", methodName))
 		{

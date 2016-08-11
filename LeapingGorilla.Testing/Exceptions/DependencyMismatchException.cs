@@ -20,8 +20,16 @@ using System.Reflection;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	/// <summary>Exception raised when multiple dependencies exist with the same type and the names do not match the constructor.</summary>
 	public class DependencyMismatchException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DependencyMismatchException"/> class.
+		/// </summary>
+		/// <param name="expectedType">The expected type.</param>
+		/// <param name="expectedName">The expected name.</param>
+		/// <param name="index">The zero-based index of the parameter in the constructor.</param>
+		/// <param name="allParams">All parameters considered for the constructor.</param>
 		public DependencyMismatchException(Type expectedType, string expectedName, int index, IEnumerable<ParameterInfo> allParams) :
 			base(
 			String.Format(

@@ -17,8 +17,13 @@ using System;
 
 namespace LeapingGorilla.Testing.Exceptions
 {
+	///<summary>Exception raised if the return type for a method marked with [When] is not void or Task</summary>
 	public class WhenMethodsMustBeVoidOrTaskException : ApplicationException
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WhenMethodsMustBeVoidOrTaskException"/> class.
+		/// </summary>
+		/// <param name="methodName">Name of the method.</param>
 		public WhenMethodsMustBeVoidOrTaskException(string methodName)
 			: base(String.Format("The method {0} cannot be marked with the [When] attribute - all [When] methods must be void or return a Task", methodName))
 		{
