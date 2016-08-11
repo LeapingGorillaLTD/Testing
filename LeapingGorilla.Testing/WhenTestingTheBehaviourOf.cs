@@ -38,7 +38,7 @@ namespace LeapingGorilla.Testing
 		protected virtual void CreateManualDependencies() { }
 		
 		/// <summary>Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any) and then call the [When] methods (if any), ready for your test assertions</summary>
-		[TestFixtureSetUp]
+		[OneTimeSetUp]
 		public virtual void Setup()
 		{
 			PrepareMocksDependenciesAndItemUnderTest();
