@@ -20,7 +20,7 @@ We at Leaping Gorilla strive to remove as much friction as possible from our tes
 1. Must support constructor-based dependency injection
 2. Must have the ability to automatically mock any dependencies we wish to use with our item under test
 3. Must have the ability to override automatic mocking should the need arise
-4. Must support a clean syntax for stubbing method calls on our depndencies
+4. Must support a clean syntax for stubbing method calls on our dependencies
 5. Must have a clean BDD style Given/When/Then flow
 
 From these needs LeapingGorilla.Testing was born.
