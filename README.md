@@ -45,26 +45,21 @@ public class WhenTestingStubbing : WhenTestingTheBehaviourOf
   public IMockEventRaiser EventRaiser { get; set; }
 
   private string _severeResponse;
-  private string _nonSevereResponse;
 
   private string _severeReturn;
-  private string _nonSevereReturn;
 
   [Given]
   protected void TheEventRaiserShouldHaveDifferentReturnsBasedOnTheEventSeverity()
   {
     _severeResponse = "This is a severe response";
-    _nonSevereResponse = "This is a non-severe response";
 
     EventRaiser.RaiseEvent(true).Returns(_severeResponse);
-    EventRaiser.RaiseEvent(false).Returns(_nonSevereResponse);
   }
 
   [When]
   protected void TheEventRaiserRaisesASevereAndNonSevereEvent()
   {
     _severeReturn = ClassRaisingEvent.DoSomethingWithTheEventRaiser(true);
-    _nonSevereReturn = ClassRaisingEvent.DoSomethingWithTheEventRaiser(false);
   }
 
   [Then]
@@ -74,15 +69,9 @@ public class WhenTestingStubbing : WhenTestingTheBehaviourOf
   }
 
   [Then]
-  public void NonSevereReturnShouldMatchResponse()
-  {
-    Assert.That(_nonSevereReturn, Is.EqualTo(_nonSevereResponse));
-  }
-
-  [Then]
   public void EventRaiserShouldBeCalledTwice()
   {
-    EventRaiser.Received(2).RaiseEvent(Arg.Any<bool>());
+    EventRaiser.Received(1).RaiseEvent(Arg.Any<bool>());
   }
 }
 ```
