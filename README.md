@@ -49,7 +49,7 @@ public class WhenTestingStubbing : WhenTestingTheBehaviourOf
   private string _severeReturn;
 
   [Given]
-  protected void TheEventRaiserShouldHaveDifferentReturnsBasedOnTheEventSeverity()
+  protected void TheEventRaiserHasSevereResponse()
   {
     _severeResponse = "This is a severe response";
 
@@ -57,7 +57,7 @@ public class WhenTestingStubbing : WhenTestingTheBehaviourOf
   }
 
   [When]
-  protected void TheEventRaiserRaisesASevereAndNonSevereEvent()
+  protected void TheEventRaiserRaisesASevereEvent()
   {
     _severeReturn = ClassRaisingEvent.DoSomethingWithTheEventRaiser(true);
   }
@@ -69,7 +69,7 @@ public class WhenTestingStubbing : WhenTestingTheBehaviourOf
   }
 
   [Then]
-  public void EventRaiserShouldBeCalledTwice()
+  public void EventRaiserShouldBeCalled()
   {
     EventRaiser.Received(1).RaiseEvent(Arg.Any<bool>());
   }
