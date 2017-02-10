@@ -230,7 +230,16 @@ namespace LeapingGorilla.Testing
 		private static ConstructorInfo GetPreferredConstructor(Type itemUnderTestType, ICollection<Dependency> dependencies)
 #endif
 		{
+			if (itemUnderTestType.IsAbstract || itemUnderTestType.IsInterface)
+			{
+				throw new ItemUnderTestCannotBeInterfaceStaticOrAbstract(itemUnderTestType);
+			}
+
 			var constructors = itemUnderTestType.GetConstructors();
+			if (constructors.All(c => c.IsPrivate))
+			{
+				throw new ItemUnderTestMustHavePublicConstructor(itemUnderTestType);
+			}
 
 			var preferredConstructor =
 				constructors.FirstOrDefault(ci =>

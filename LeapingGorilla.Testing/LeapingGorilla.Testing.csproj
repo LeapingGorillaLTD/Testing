@@ -95,8 +95,10 @@
     <Compile Include="Attributes\WhenAttribute.cs" />
     <Compile Include="Dependency.cs" />
     <Compile Include="Exceptions\CannotMarkNonNullableTypeAsNullDependencyException.cs" />
+    <Compile Include="Exceptions\ItemUnderTestCannotBeInterfaceStaticOrAbstract.cs" />
     <Compile Include="Exceptions\WhenMethodMayNotHaveParametersException.cs" />
     <Compile Include="Exceptions\WhenMethodMayOnlyAppearOnceException.cs" />
+    <Compile Include="Exceptions\ItemUnderTestMustHavePublicConstructor.cs" />
     <Compile Include="Exceptions\WhenMethodsMustBeVoidOrTaskException.cs" />
     <Compile Include="Exceptions\DependencyMismatchException.cs" />
     <Compile Include="Exceptions\GivenMethodMayNotHaveParametersException.cs" />

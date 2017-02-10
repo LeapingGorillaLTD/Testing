@@ -78,11 +78,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mocks\ClassTakingNullableInt.cs" />
+    <Compile Include="WhenItemUnderTestHasNoPublicConstructor.cs" />
+    <Compile Include="WhenItemUnderTestIsAbstract.cs" />
     <Compile Include="WhenTestingAnAsyncMethod.cs" />
     <Compile Include="WhenTestingANullDependencyForNullableValueType.cs" />
     <Compile Include="WhenTestingMultipleGivenMethodsUsingTheAttributeConstructor.cs" />
     <Compile Include="WhenTestingNullDependencyInjectionOnNonNullableType.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodThatHasAReturnType.cs" />
+    <Compile Include="WhenItemUnderTestIsAnInterface.cs" />
     <Compile Include="WhenTestingSetupWithAWhenMethodWithParameters.cs" />
     <Compile Include="WhenTestingSetupWithTooManyWhenFields.cs" />
     <Compile Include="WhenTestingMultipleGivenMethods.cs" />
