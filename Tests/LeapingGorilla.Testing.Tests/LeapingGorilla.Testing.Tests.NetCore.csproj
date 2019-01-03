@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>LeapingGorilla.Testing.Tests</AssemblyName>
+    <RootNamespace>LeapingGorilla.Testing.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

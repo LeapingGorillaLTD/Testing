@@ -11,6 +11,8 @@
     <RepositoryUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing/src</RepositoryUrl>
     <RepositoryType>Hg</RepositoryType>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyName>LeapingGorilla.Testing</AssemblyName>
+    <RootNamespace>LeapingGorilla.Testing</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
