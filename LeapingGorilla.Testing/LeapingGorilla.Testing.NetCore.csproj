@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>3.1.1.0</Version>
+    <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction</Description>
+    <Company>Leaping Gorilla LTD</Company>
+    <Authors>Leaping Gorilla LTD</Authors>
+    <Copyright>Copyright Leaping Gorilla LTD ©  2013-2018</Copyright>
+    <PackageProjectUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing</PackageProjectUrl>
+    <RepositoryUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing/src</RepositoryUrl>
+    <RepositoryType>Hg</RepositoryType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nsubstitute" Version="3.1.0" />
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

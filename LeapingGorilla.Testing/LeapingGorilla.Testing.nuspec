@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>LeapingGorilla.Testing</id>
-        <version>$version$</version>
+        <version>3.1.1</version>
         <title>Leaping Gorilla - Testing BDD Framework</title>
         <authors>Leaping Gorilla LTD</authors>
         <owners />
@@ -20,13 +20,14 @@
 
 From these needs LeapingGorilla.Testing was born.</description>
 		<projectUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing</projectUrl>
-		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+		<license type="expression">Apache-2.0</license>
 		<copyright>Leaping Gorilla LTD</copyright>
 		<tags>BDD Testing</tags>
 		<dependencies>
 			<group>
-				<dependency id="NUnit" version="3.4.1" />
-				<dependency id="NSubstitute" version="1.10.0.0" />
+        <dependency id="System.Reflection.Emit" version="4.3.0" exclude="Build,Analyzers" />
+				<dependency id="NUnit" version="3.11.0" />
+				<dependency id="NSubstitute" version="3.1.0" />
 			</group>
 		</dependencies>
     </metadata>
@@ -35,8 +36,8 @@ From these needs LeapingGorilla.Testing was born.</description>
 		<file src="bin\Release-Net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
 		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
 		
-		<file src="bin\Release-Net40\LeapingGorilla.Testing.dll" target="lib\net40\LeapingGorilla.Testing.dll" />
-		<file src="bin\Release-Net40\LeapingGorilla.Testing.pdb" target="lib\net40\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release-Net40\LeapingGorilla.Testing.xml" target="lib\net40\LeapingGorilla.Testing.xml" />
+		<file src="bin\netcoreapp2.1\LeapingGorilla.Testing.dll" target="lib\netcoreapp2.1\LeapingGorilla.Testing.dll" />
+		<file src="bin\netcoreapp2.1\LeapingGorilla.Testing.pdb" target="lib\netcoreapp2.1\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\netcoreapp2.1\LeapingGorilla.Testing.xml" />
     </files>
 </package>
