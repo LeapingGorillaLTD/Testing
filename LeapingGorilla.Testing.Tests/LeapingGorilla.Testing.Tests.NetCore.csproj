@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LeapingGorilla.Testing\LeapingGorilla.Testing.NetCore.csproj" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\LeapingGorilla.Testing\LeapingGorilla.Testing.NetCore.csproj" />
   </ItemGroup>
 
 </Project>

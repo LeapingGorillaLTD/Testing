@@ -32,12 +32,12 @@ From these needs LeapingGorilla.Testing was born.</description>
 		</dependencies>
     </metadata>
     <files>
-		<file src="bin\Release-Net45\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
-		<file src="bin\Release-Net45\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release\LeapingGorilla.Testing.dll" target="lib\net45\LeapingGorilla.Testing.dll" />
+		<file src="bin\Release\LeapingGorilla.Testing.pdb" target="lib\net45\LeapingGorilla.Testing.pdb" />
+		<file src="bin\Release\LeapingGorilla.Testing.xml" target="lib\net45\LeapingGorilla.Testing.xml" />
 		
 		<file src="bin\Release\netcoreapp2.1\LeapingGorilla.Testing.dll" target="lib\netcoreapp2.1\LeapingGorilla.Testing.dll" />
 		<file src="bin\Release\netcoreapp2.1\LeapingGorilla.Testing.pdb" target="lib\netcoreapp2.1\LeapingGorilla.Testing.pdb" />
-		<file src="bin\Release-Net45\LeapingGorilla.Testing.xml" target="lib\netcoreapp2.1\LeapingGorilla.Testing.xml" />
+		<file src="bin\Release\LeapingGorilla.Testing.xml" target="lib\netcoreapp2.1\LeapingGorilla.Testing.xml" />
     </files>
 </package>
