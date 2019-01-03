@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapingGorilla.Testing", "LeapingGorilla.Testing\LeapingGorilla.Testing.NetCore.csproj", "{DF8E1558-3657-44C3-ACBF-DE010FF9FFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapingGorilla.Testing.Tests", "Tests\LeapingGorilla.Testing.Tests\LeapingGorilla.Testing.Tests.NetCore.csproj", "{136915D0-DBCA-449F-B86E-761385F022AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapingGorilla.Testing.Tests", "LeapingGorilla.Testing.Tests\LeapingGorilla.Testing.Tests.NetCore.csproj", "{136915D0-DBCA-449F-B86E-761385F022AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
