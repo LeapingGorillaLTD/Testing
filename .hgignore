@@ -1,3 +1,5 @@
 syntax: glob
 LeapingGorilla.Testing/NuGet/*
 *.GhostDoc.*
+*.nupkg
+TestResult.xml
