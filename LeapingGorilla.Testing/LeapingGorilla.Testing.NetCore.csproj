@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Version>3.1.1.0</Version>
+    <Version>4.0.0</Version>
     <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction</Description>
     <Company>Leaping Gorilla LTD</Company>
     <Authors>Leaping Gorilla LTD</Authors>
@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="nsubstitute" Version="3.1.0" />
-    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="nsubstitute" Version="4.2.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
 

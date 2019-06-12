@@ -26,7 +26,9 @@ namespace LeapingGorilla.Testing.Tests
 		private Exception _setupException;
 
 		[Mock]
+#pragma warning disable 649
 		private IMockLogger privateFieldMock;
+#pragma warning restore 649
 		
 		[Mock]
 		private IMockLogger PrivatePropertyMock { get; set; }
