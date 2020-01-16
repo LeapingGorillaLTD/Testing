@@ -103,26 +103,26 @@ My First Test
 FAQ
 ===
 
-####Q: How do I provide my own dependencies?
+#### Q: How do I provide my own dependencies?
 A: Override the ```CreateManualDependencies``` method and assign them from there
 
-####Q: How can I mock an item that I need for my test but is not a dependency?
+#### Q: How can I mock an item that I need for my test but is not a dependency?
 A: Mark it with a ```Mock``` attribute
 
-####Q: Why can I only have a single ```When``` method?
+#### Q: Why can I only have a single ```When``` method?
 A: Convention. At Leaping Gorilla we stick to the rule that each test class tests a single behaviour. If a behaviour can't be expressed as a single "When I  X" then we take it as a sign that our code probably needs refactoring.
 
-####Q: How do I control the ordering of my ```Given``` methods?
+#### Q: How do I control the ordering of my ```Given``` methods?
 A: Use the optional ```Order``` property at the point of decoration like:
 
 ```CSHARP
 [Given(Order=2)] 
 ```
 
-####Q: How do I mock a dependency that is a concrete class?
+#### Q: How do I mock a dependency that is a concrete class?
 A: The short answer is: You can't. The longer answer is: you can override the ```CreateManualDependencies``` method and substitute your own mock object there but we cannot generate an automatic mock. This is down to the nature of the .Net framework and short of using an expensive tool like TypeMock or JustMock itisn't going to change. Take it instead as an opportunity to do some glorious refactoring to break that concrete dependency into an interface.
 
-####Q: How do I test an async method?
+#### Q: How do I test an async method?
 A: Make sure that your method returns Task, not void and it will Just Work (tm) like:
 
 ```CSHARP
@@ -133,11 +133,11 @@ public async Task SomethingAsyncHappens()
 }
 ```
 
-####Q: How do I contribute?
+#### Q: How do I contribute?
 A: Fork and submit a pull request! For your pull request to be considered it should include tests as well as functional code. 
 
-####Q: What license do you distribute the framework under?
+#### Q: What license do you distribute the framework under?
 A: LeapingGorilla.Testing is made available under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0). You are free to use the software in any way you choose as long as you adhere to the license.
 
-####Q: Do you provide any support for implementation?
+#### Q: Do you provide any support for implementation?
 A: We are open to talk with you or your business! Drop us a line via our [contact form](http://www.leapinggorilla.com/Home/Contact).
