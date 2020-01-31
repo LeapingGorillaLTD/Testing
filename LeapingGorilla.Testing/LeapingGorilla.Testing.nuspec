@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>LeapingGorilla.Testing</id>
-        <version>4.0.0</version>
+        <version>4.1.0</version>
         <title>Leaping Gorilla - Testing BDD Framework</title>
         <authors>Leaping Gorilla LTD</authors>
         <owners />
@@ -19,13 +19,13 @@
 5. Must have a clean BDD style Given/When/Then flow
 
 From these needs LeapingGorilla.Testing was born.</description>
-		<projectUrl>https://bitbucket.org/LeapingGorillaLTD/leapinggorilla.testing</projectUrl>
+		<projectUrl>https://github.com/LeapingGorillaLTD/Testing</projectUrl>
 		<license type="expression">Apache-2.0</license>
 		<copyright>Leaping Gorilla LTD</copyright>
 		<tags>BDD Testing</tags>
 		<dependencies>
 			<group>
-        <dependency id="System.Reflection.Emit" version="4.3.0" exclude="Build,Analyzers" />
+				<dependency id="System.Reflection.Emit" version="4.3.0" exclude="Build,Analyzers" />
 				<dependency id="NUnit" version="3.12.0" />
 				<dependency id="NSubstitute" version="4.2.0" />
 			</group>

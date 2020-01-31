@@ -1,7 +1,11 @@
+REM this should be run from a VS Dev Command Prompt
 rd /q /s packages
 rd /q /s LeapingGorilla.Testing\bin\Release
+rd /q /s LeapingGorilla.Testing\obj
+rd /q /s LeapingGorilla.Testing.Tests\obj
+
 nuget restore LeapingGorilla.Testing.sln
-"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe" LeapingGorilla.Testing.sln /t:Build /p:configuration="Release"
+MSBuild.exe LeapingGorilla.Testing.sln /t:Build /p:configuration="Release"
 
 rd /q /s packages
 nuget restore LeapingGorilla.Testing.NetCore.sln

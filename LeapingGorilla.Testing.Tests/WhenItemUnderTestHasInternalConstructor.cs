@@ -13,9 +13,14 @@ namespace LeapingGorilla.Testing.Tests
 
     public class ClassWithInternalConstructor
     {
+	    public IMockLogger Logger { get;}
+
         private ClassWithInternalConstructor() { }
 
-        internal ClassWithInternalConstructor(IMockLogger logger) { }
+        internal ClassWithInternalConstructor(IMockLogger logger)
+        {
+	        Logger = logger;
+        }
     }
     
     public class WhenItemUnderTestHasInternalConstructor : WhenTestingTheBehaviourOf
@@ -30,6 +35,18 @@ namespace LeapingGorilla.Testing.Tests
         public void SetupShouldCreateClass()
         {
             Assert.That(Item, Is.Not.Null);
+        }
+
+        [Then]
+        public void LoggerShouldBeAssigned()
+        {
+	        Assert.That(Item.Logger, Is.Not.Null);
+        }
+
+        [Then]
+        public void LoggerShouldBeOurMock()
+        {
+	        Assert.That(Item.Logger, Is.EqualTo(Logger));
         }
     }
 }
