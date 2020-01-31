@@ -175,8 +175,8 @@ namespace LeapingGorilla.Testing
 				constructorArguments[index] = dep.Value;
 			}
 
-				// Create the item under test and load it into the test class
-			accessor[this, itemUnderTest.Name] = Activator.CreateInstance(itemUnderTest.Type, constructorArguments);
+			// Create the item under test and load it into the test class
+			accessor[this, itemUnderTest.Name] = constructor.Invoke(constructorArguments);
 		}
 
 		private List<Dependency> CreateAndAssignPropertiesOrFieldsWithAttribute(TypeAccessor accessor, Type attributeType)
@@ -235,7 +235,11 @@ namespace LeapingGorilla.Testing
 				throw new ItemUnderTestCannotBeInterfaceStaticOrAbstract(itemUnderTestType);
 			}
 
-			var constructors = itemUnderTestType.GetConstructors();
+			// Look for Public or Internal Constructors
+			var constructors = itemUnderTestType
+                .GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Where(c => c.IsPublic || c.IsAssembly);
+
 			if (constructors.All(c => c.IsPrivate))
 			{
 				throw new ItemUnderTestMustHavePublicConstructor(itemUnderTestType);
