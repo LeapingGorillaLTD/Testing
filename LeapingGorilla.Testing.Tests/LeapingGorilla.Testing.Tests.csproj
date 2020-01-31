@@ -70,6 +70,7 @@
     <Compile Include="WhenItemUnderTestHasNoPublicConstructor.cs" />
     <Compile Include="WhenItemUnderTestIsAbstract.cs" />
     <Compile Include="WhenItemUnderTestIsAnInterface.cs" />
+    <Compile Include="WhenItemUnderTestHasInternalConstructor.cs" />
     <Compile Include="WhenNoItemUnderTestOrGiven.cs" />
     <Compile Include="WhenTestingANullDependency.cs" />
     <Compile Include="WhenTestingANullDependencyForNullableValueType.cs" />
