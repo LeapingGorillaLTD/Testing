@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-	<DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -72,6 +72,8 @@
     <Compile Include="WhenItemUnderTestIsAnInterface.cs" />
     <Compile Include="WhenItemUnderTestHasInternalConstructor.cs" />
     <Compile Include="WhenNoItemUnderTestOrGiven.cs" />
+    <Compile Include="WhenTestThrowsExceptionAndWeWantToCatch.cs" />
+    <Compile Include="WhenTestThrowsExceptionAndWeDoNotWantToCatch.cs" />
     <Compile Include="WhenTestingANullDependency.cs" />
     <Compile Include="WhenTestingANullDependencyForNullableValueType.cs" />
     <Compile Include="WhenTestingAttemptingToMockAnInvalidType.cs" />

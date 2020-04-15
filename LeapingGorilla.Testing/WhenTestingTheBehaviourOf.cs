@@ -30,6 +30,8 @@ namespace LeapingGorilla.Testing
 	[TestFixture]
 	public abstract class WhenTestingTheBehaviourOf
 	{
+		public Exception ThrownException { get; private set; }
+
 		/// <summary>
 		/// Creates the manual dependencies. Override this method if you wish to manually specify the values of any field or property that you
 		/// wish to use as a dependency. You should use this method to assign the values to the properties or fields with manually
@@ -48,7 +50,7 @@ namespace LeapingGorilla.Testing
 
 		private void ExecuteWhenMethod()
 		{
-				// Check we dont have more than one [When] method
+				// Check we don't have more than one [When] method
 			var whenMethods = GetMethodsWithAttribute(typeof(WhenAttribute)).ToList();
 			if (whenMethods.Count > 1)
 			{
@@ -63,6 +65,7 @@ namespace LeapingGorilla.Testing
 
 				// Single when method - invoke it after checking it's return and parameters
 			var method = whenMethods.Single();
+			var whenAttribute = (WhenAttribute)Attribute.GetCustomAttribute(method, typeof(WhenAttribute));
 
 #if NET35
 			if (method.ReturnType != typeof(void))
@@ -78,19 +81,32 @@ namespace LeapingGorilla.Testing
 				throw new WhenMethodMayNotHaveParametersException(method.Name);
 			}
 
+			try
+			{
 #if NET35
-			method.Invoke(this, null);
-#else
-			if (method.ReturnType == typeof(Task))
-			{
-				var task = (Task)method.Invoke(this, null);
-				task.Wait();
-			}
-			else
-			{
 				method.Invoke(this, null);
-			}
+#else
+				if (method.ReturnType == typeof(Task))
+				{
+					var task = (Task)method.Invoke(this, null);
+					task.Wait();
+				}
+				else
+				{
+					method.Invoke(this, null);
+				}
 #endif
+			}
+			catch (Exception ex)
+			{
+				ThrownException = ex is TargetInvocationException ? ex.InnerException : ex;
+
+				if (!whenAttribute.DoNotRethrowExceptions)
+				{
+					throw;
+				}
+			}
+
 		}
 
 		private void ExecuteGivenMethods()
