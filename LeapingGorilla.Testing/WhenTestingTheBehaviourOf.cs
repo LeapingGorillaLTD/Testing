@@ -99,7 +99,9 @@ namespace LeapingGorilla.Testing
 			}
 			catch (Exception ex)
 			{
-				ThrownException = ex is TargetInvocationException ? ex.InnerException : ex;
+				ThrownException = (ex is TargetInvocationException || ex is AggregateException) && ex.InnerException != null 
+									? ex.InnerException 
+									: ex;
 
 				if (!whenAttribute.DoNotRethrowExceptions)
 				{

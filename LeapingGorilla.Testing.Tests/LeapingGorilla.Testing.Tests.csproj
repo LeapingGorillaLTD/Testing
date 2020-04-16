@@ -72,6 +72,8 @@
     <Compile Include="WhenItemUnderTestIsAnInterface.cs" />
     <Compile Include="WhenItemUnderTestHasInternalConstructor.cs" />
     <Compile Include="WhenNoItemUnderTestOrGiven.cs" />
+    <Compile Include="WhenTestThrowsExceptionInAsyncMethodAndWeDoNotWantToCatch.cs" />
+    <Compile Include="WhenTestThrowsExceptionInAsyncMethodAndWeWantToCatch.cs" />
     <Compile Include="WhenTestThrowsExceptionAndWeWantToCatch.cs" />
     <Compile Include="WhenTestThrowsExceptionAndWeDoNotWantToCatch.cs" />
     <Compile Include="WhenTestingANullDependency.cs" />

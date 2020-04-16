@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Threading.Tasks;
 
 namespace LeapingGorilla.Testing.Tests.Mocks
 {
@@ -34,6 +35,11 @@ namespace LeapingGorilla.Testing.Tests.Mocks
 		}
 
 		public void MethodThatThrowsAnException()
+		{
+			throw new ApplicationException(ExceptionMessage);
+		}
+		
+		public Task MethodThatThrowsAnExceptionAsync()
 		{
 			throw new ApplicationException(ExceptionMessage);
 		}
