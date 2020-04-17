@@ -30,6 +30,7 @@ obj/
 [Rr]elease*/
 [Pp]ublished*/
 Ankh.NoLoad
+packages/*
 
 #Tooling
 _ReSharper*/

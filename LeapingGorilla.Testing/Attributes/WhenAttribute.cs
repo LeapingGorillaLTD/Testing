@@ -18,10 +18,29 @@ using System;
 namespace LeapingGorilla.Testing.Attributes
 {
 	/// <summary>
-	/// Marks a method as being the entrypoint for a test. This class cannot be inherited.
+	/// Marks a method as being the entry point for a test. This class cannot be inherited.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 	public sealed class WhenAttribute : Attribute
 	{
+        /// <summary>Should exceptions be rethrown if they are experienced whilst calling the When method?</summary>
+        public bool DoNotRethrowExceptions { get; }
+
+        public WhenAttribute() {}
+
+        /// <summary>
+        /// Mark a method as the entry point for a test. Also dictate if exceptions from the
+        /// When method will be thrown or silently swallowed and written into the <see cref="WhenTestingTheBehaviourOf.ThrownException"/> property
+        /// </summary>
+        /// <param name="DoNotRethrowExceptions">
+        /// If true then execution of the When method will swallow any exceptions that are encountered.
+        /// The exception will be written into the <see cref="WhenTestingTheBehaviourOf.ThrownException"/> property
+        /// which will be available for you to Assert against. TO override this behaviour either set
+        /// <see cref="DoNotRethrowExceptions"/> to false or include a try/catch statement in your When method.
+        /// </param>
+        public WhenAttribute(bool DoNotRethrowExceptions)
+        {
+	        this.DoNotRethrowExceptions = DoNotRethrowExceptions;
+        }
 	}
 }
