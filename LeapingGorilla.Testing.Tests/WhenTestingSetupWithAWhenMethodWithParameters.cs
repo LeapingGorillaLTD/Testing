@@ -16,7 +16,6 @@
 using System;
 using LeapingGorilla.Testing.Attributes;
 using LeapingGorilla.Testing.Exceptions;
-using LeapingGorilla.Testing.Tests.Mocks;
 using NUnit.Framework;
 
 namespace LeapingGorilla.Testing.Tests

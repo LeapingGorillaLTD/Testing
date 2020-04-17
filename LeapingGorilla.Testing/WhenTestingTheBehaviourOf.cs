@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using LeapingGorilla.Testing.FastMember;
 using LeapingGorilla.Testing.Attributes;
 using LeapingGorilla.Testing.Exceptions;
 using NUnit.Framework;
@@ -30,6 +29,10 @@ namespace LeapingGorilla.Testing
 	[TestFixture]
 	public abstract class WhenTestingTheBehaviourOf
 	{
+		/// <summary>
+		/// Stores any <see cref="Exception"/> that was thrown whilst calling the method
+		/// marked with a <see cref="WhenAttribute"/>.
+		/// </summary>
 		public Exception ThrownException { get; private set; }
 
 		/// <summary>

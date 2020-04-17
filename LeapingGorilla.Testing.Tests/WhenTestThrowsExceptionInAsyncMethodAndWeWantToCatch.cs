@@ -35,7 +35,6 @@ namespace LeapingGorilla.Testing.Tests
 		[Then]
 		public void LoggedExceptionShouldHaveExpectedMessage()
 		{
-
 			Assert.That(ThrownException?.Message, Is.EqualTo(SimpleClassToTest.ExceptionMessage));
 		}
 
