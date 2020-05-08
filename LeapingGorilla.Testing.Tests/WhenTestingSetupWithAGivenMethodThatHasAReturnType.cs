@@ -51,7 +51,7 @@ namespace LeapingGorilla.Testing.Tests
 		[Then]
 		public void SetupExceptionShouldBeAGivenMethodsMustBeVoidException()
 		{
-			Assert.That(_setupException, Is.TypeOf<GivenMethodsMustBeVoidException>());
+			Assert.That(_setupException, Is.TypeOf<GivenMethodsMustBeVoidOrTaskException>());
 		}
 	}
 }

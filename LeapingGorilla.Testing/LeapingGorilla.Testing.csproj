@@ -74,7 +74,7 @@
     <Compile Include="Exceptions\CannotMarkNonNullableTypeAsNullDependencyException.cs" />
     <Compile Include="Exceptions\DependencyMismatchException.cs" />
     <Compile Include="Exceptions\GivenMethodMayNotHaveParametersException.cs" />
-    <Compile Include="Exceptions\GivenMethodsMustBeVoidException.cs" />
+    <Compile Include="Exceptions\GivenMethodsMustBeVoidOrTaskException.cs" />
     <Compile Include="Exceptions\ItemUnderTestCannotBeInterfaceStaticOrAbstract.cs" />
     <Compile Include="Exceptions\ItemUnderTestMustHavePublicConstructor.cs" />
     <Compile Include="Exceptions\NoItemUnderTestException.cs" />

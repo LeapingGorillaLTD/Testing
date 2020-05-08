@@ -70,11 +70,8 @@ namespace LeapingGorilla.Testing
 			var method = whenMethods.Single();
 			var whenAttribute = (WhenAttribute)Attribute.GetCustomAttribute(method, typeof(WhenAttribute));
 
-#if NET35
-			if (method.ReturnType != typeof(void))
-#else
-				if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
-#endif
+
+			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
 			{
 				throw new WhenMethodsMustBeVoidOrTaskException(method.Name);
 			}
@@ -86,19 +83,7 @@ namespace LeapingGorilla.Testing
 
 			try
 			{
-#if NET35
-				method.Invoke(this, null);
-#else
-				if (method.ReturnType == typeof(Task))
-				{
-					var task = (Task)method.Invoke(this, null);
-					task.Wait();
-				}
-				else
-				{
-					method.Invoke(this, null);
-				}
-#endif
+				InvokeMethodAsVoidOrTask(method);
 			}
 			catch (Exception ex)
 			{
@@ -113,16 +98,16 @@ namespace LeapingGorilla.Testing
 			}
 
 		}
-
+		
 		private void ExecuteGivenMethods()
 		{
 			var givenMethods = GetMethodsWithAttribute(typeof(GivenAttribute));
 
 			foreach (var method in givenMethods.OrderBy(gm => ((GivenAttribute)gm.GetCustomAttributes(typeof(GivenAttribute), true).First()).Order))
 			{
-				if (method.ReturnType != typeof(void))
+				if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
 				{
-					throw new GivenMethodsMustBeVoidException(method.Name);
+					throw new GivenMethodsMustBeVoidOrTaskException(method.Name);
 				}
 
 				if (method.GetParameters().Any())
@@ -130,6 +115,19 @@ namespace LeapingGorilla.Testing
 					throw new GivenMethodMayNotHaveParametersException(method.Name);
 				}
 
+				InvokeMethodAsVoidOrTask(method);
+			}
+		}
+
+		private void InvokeMethodAsVoidOrTask(MethodInfo method)
+		{
+			if (method.ReturnType == typeof(Task))
+			{
+				var task = (Task)method.Invoke(this, null);
+				task.Wait();
+			}
+			else
+			{
 				method.Invoke(this, null);
 			}
 		}
