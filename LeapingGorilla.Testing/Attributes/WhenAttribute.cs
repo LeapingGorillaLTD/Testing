@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,14 +13,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System;
 
-namespace LeapingGorilla.Testing.Attributes
+namespace LeapingGorilla.Testing.Core.Attributes
 {
 	/// <summary>
 	/// Marks a method as being the entry point for a test. This class cannot be inherited.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [IgnoreXunitAnalyzersRule1013]
 	public sealed class WhenAttribute : Attribute
 	{
         /// <summary>Should exceptions be rethrown if they are experienced whilst calling the When method?</summary>

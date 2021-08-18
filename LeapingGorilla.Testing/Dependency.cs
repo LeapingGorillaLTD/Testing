@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,13 +13,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System;
 using System.Linq;
 using System.Reflection;
-using LeapingGorilla.Testing.Exceptions;
+using LeapingGorilla.Testing.Core.Exceptions;
 using NSubstitute;
 
-namespace LeapingGorilla.Testing
+namespace LeapingGorilla.Testing.Core
 {
 	/// <summary>
 	/// Models an injectable dependency in a test class

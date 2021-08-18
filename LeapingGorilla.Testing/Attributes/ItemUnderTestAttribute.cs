@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System;
 
-namespace LeapingGorilla.Testing.Attributes
+namespace LeapingGorilla.Testing.Core.Attributes
 {
 	/// <summary>
 	/// Marks the item that is being tested. The property or field decorated with this attribute will be instantiated 
@@ -23,6 +24,7 @@ namespace LeapingGorilla.Testing.Attributes
 	/// This class cannot be inherited.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    [IgnoreXunitAnalyzersRule1013]
 	public sealed class ItemUnderTestAttribute : Attribute
 	{
 	}

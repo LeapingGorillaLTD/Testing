@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>LeapingGorilla.Testing.XUnit.Tests</AssemblyName>
+        <RootNamespace>LeapingGorilla.Testing.XUnit.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Properties\**" />
+        <EmbeddedResource Remove="Properties\**" />
+        <None Remove="Properties\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\LeapingGorilla.Testing.XUnit\LeapingGorilla.Testing.XUnit.csproj" />
+        <ProjectReference Include="..\LeapingGorilla.Testing\LeapingGorilla.Testing.Core.csproj" />
+    </ItemGroup>
+
+</Project>

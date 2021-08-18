@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,11 +15,12 @@
 */
 
 using System;
-using LeapingGorilla.Testing.Attributes;
-using LeapingGorilla.Testing.Tests.Mocks;
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.NUnit.Attributes;
+using LeapingGorilla.Testing.NUnit.Tests.Mocks;
 using NUnit.Framework;
 
-namespace LeapingGorilla.Testing.Tests
+namespace LeapingGorilla.Testing.NUnit.Tests
 {
 	public class WhenTestingANullDependencyForNullableValueType : WhenTestingTheBehaviourOf
 	{

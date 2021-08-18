@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,12 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace LeapingGorilla.Testing.Exceptions
+namespace LeapingGorilla.Testing.Core.Exceptions
 {
 	/// <summary>Exception raised when multiple dependencies exist with the same type and the names do not match the constructor.</summary>
 	public class DependencyMismatchException : ApplicationException

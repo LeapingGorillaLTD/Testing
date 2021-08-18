@@ -14,10 +14,11 @@
    limitations under the License.
 */
 
-using LeapingGorilla.Testing.Attributes;
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.NUnit.Attributes;
 using NUnit.Framework;
 
-namespace LeapingGorilla.Testing.Tests
+namespace LeapingGorilla.Testing.NUnit.Tests
 {
 	public class WhenNoItemUnderTestOrGiven : WhenTestingTheBehaviourOf
 	{

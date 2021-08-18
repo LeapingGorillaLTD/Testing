@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+        <Version>4.3.0</Version>
+        <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction based on the XUnit testing library.
+
+ We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
+
+1. Must support constructor-based dependency injection
+2. Must have the ability to automatically mock any dependencies we wish to use with our item under test
+3. Must have the ability to override automatic mocking should the need arise
+4. Must support a clean syntax for stubbing method calls on our dependencies
+5. Must have a clean BDD style Given/When/Then flow
+
+From these needs LeapingGorilla.Testing was born.</Description>
+        <Company>Leaping Gorilla LTD</Company>
+        <Authors>Leaping Gorilla LTD</Authors>
+        <Copyright>Copyright Leaping Gorilla LTD ©  2013-2021</Copyright>
+        <PackageProjectUrl>https://github.com/LeapingGorillaLTD/Testing</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/LeapingGorillaLTD/Testing</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageId>LeapingGorilla.Testing.XUnit</PackageId>
+        <Product>LeapingGorilla.Testing.XUnit</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="xunit" Version="2.4.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\LeapingGorilla.Testing\LeapingGorilla.Testing.Core.csproj" />
+    </ItemGroup>
+
+</Project>

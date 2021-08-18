@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,10 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using LeapingGorilla.Testing.Attributes;
+
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.NUnit.Attributes;
 using NUnit.Framework;
 
-namespace LeapingGorilla.Testing.Tests
+namespace LeapingGorilla.Testing.NUnit.Tests
 {
 	public class WhenTestingMultipleGivenMethodsUsingTheAttributeConstructor : WhenTestingTheBehaviourOf
 	{

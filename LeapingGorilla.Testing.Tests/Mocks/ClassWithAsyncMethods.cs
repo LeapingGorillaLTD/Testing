@@ -13,9 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System.Threading.Tasks;
 
-namespace LeapingGorilla.Testing.Tests.Mocks
+namespace LeapingGorilla.Testing.NUnit.Tests.Mocks
 {
 	public class ClassWithAsyncMethods
 	{

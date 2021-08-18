@@ -13,11 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using LeapingGorilla.Testing.Attributes;
-using LeapingGorilla.Testing.Tests.Mocks;
+
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.NUnit.Attributes;
+using LeapingGorilla.Testing.NUnit.Tests.Mocks;
 using NUnit.Framework;
 
-namespace LeapingGorilla.Testing.Tests
+namespace LeapingGorilla.Testing.NUnit.Tests
 {
 
     public class ClassWithInternalConstructor

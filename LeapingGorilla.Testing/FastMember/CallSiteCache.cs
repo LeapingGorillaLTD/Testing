@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Microsoft.CSharp.RuntimeBinder;
+using Binder = Microsoft.CSharp.RuntimeBinder.Binder;
 
-namespace LeapingGorilla.Testing.FastMember
+namespace LeapingGorilla.Testing.Core.FastMember
 {
     internal static class CallSiteCache
     {

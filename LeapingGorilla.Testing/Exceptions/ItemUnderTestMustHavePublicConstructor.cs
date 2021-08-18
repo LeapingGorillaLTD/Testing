@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,9 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
 using System;
 
-namespace LeapingGorilla.Testing.Exceptions
+namespace LeapingGorilla.Testing.Core.Exceptions
 {
 	///<summary>
 	/// Exception raised if the item marked as [ItemUnderTest] cannot be instantiated as it does not have a public constructor.

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LeapingGorilla.Testing.XUnit</id>
+    <version>4.3.0</version>
+    <title>LeapingGorilla.Testing.XUnit</title>
+    <authors>Leaping Gorilla LTD</authors>
+    <owners>Leaping Gorilla LTD</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/LeapingGorillaLTD/Testing</projectUrl>
+    <description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction based on the XUnit testing library.
+
+ We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
+
+1. Must support constructor-based dependency injection
+2. Must have the ability to automatically mock any dependencies we wish to use with our item under test
+3. Must have the ability to override automatic mocking should the need arise
+4. Must support a clean syntax for stubbing method calls on our dependencies
+5. Must have a clean BDD style Given/When/Then flow
+
+From these needs LeapingGorilla.Testing was born.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright Leaping Gorilla LTD ©  2013-2021</copyright>
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="LeapingGorilla.Testing.Core" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="XUnit" version="2.4.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="LeapingGorilla.Testing.Core" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="XUnit" version="2.4.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+        <file src="bin\Release\net5.0\*.dll" target="lib\net5.0" />
+        <file src="bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    </files>
+</package>

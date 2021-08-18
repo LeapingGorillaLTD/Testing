@@ -5,11 +5,8 @@ using System.Dynamic;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading;
-#if !NO_DYNAMIC
 
-#endif
-
-namespace LeapingGorilla.Testing.FastMember
+namespace LeapingGorilla.Testing.Core.FastMember
 {
     /// <summary>
     /// Provides by-name member-access to objects of a given type
@@ -370,7 +367,7 @@ namespace LeapingGorilla.Testing.FastMember
             il.Emit(OpCodes.Ret);
             tb.DefineMethodOverride(body, baseMethod);
 
-            var accessor = (TypeAccessor)Activator.CreateInstance(tb.CreateType(), map);
+            var accessor = (TypeAccessor)Activator.CreateInstance(tb.CreateTypeInfo(), map);
             return accessor;
         }
 

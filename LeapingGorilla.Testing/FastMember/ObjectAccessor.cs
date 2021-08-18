@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Dynamic;
+
 #if !NO_DYNAMIC
 
 #endif
 
 
-namespace LeapingGorilla.Testing.FastMember
+namespace LeapingGorilla.Testing.Core.FastMember
 {
     /// <summary>
     /// Represents an individual object, allowing access to members by-name

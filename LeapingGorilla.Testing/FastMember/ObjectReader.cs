@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 
-namespace LeapingGorilla.Testing.FastMember
+namespace LeapingGorilla.Testing.Core.FastMember
 {
     /// <summary>
     /// Provides a means of reading a sequence of objects as a data-reader, for example

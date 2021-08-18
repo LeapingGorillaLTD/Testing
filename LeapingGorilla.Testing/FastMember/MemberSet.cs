@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace LeapingGorilla.Testing.FastMember
+namespace LeapingGorilla.Testing.Core.FastMember
 {
     /// <summary>
     /// Represents an abstracted view of the members defined for a type

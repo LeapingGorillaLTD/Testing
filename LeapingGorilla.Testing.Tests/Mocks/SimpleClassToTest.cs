@@ -1,5 +1,5 @@
 ﻿/*    
-   Copyright 2014 Leaping Gorilla LTD
+   Copyright 2014-2021 Leaping Gorilla LTD
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace LeapingGorilla.Testing.Tests.Mocks
+namespace LeapingGorilla.Testing.NUnit.Tests.Mocks
 {
 	public class SimpleClassToTest
 	{
