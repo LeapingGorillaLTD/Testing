@@ -29,7 +29,7 @@ namespace LeapingGorilla.Testing.NUnit.Tests.Mocks
 		
 		public async Task<int> DelayThenReturnSomeNumberPlusFive(int initialNumber)
 		{
-			await Task.Delay(DelayInMilliseconds);
+			await Task.Delay(DelayInMilliseconds + 1);
 			return initialNumber + 5;
 		}
 	}

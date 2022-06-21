@@ -36,3 +36,4 @@ packages/*
 _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
+.idea

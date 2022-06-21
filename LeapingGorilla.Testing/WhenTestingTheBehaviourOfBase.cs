@@ -41,13 +41,18 @@ namespace LeapingGorilla.Testing.Core
 		/// </summary>
 		protected virtual void CreateManualDependencies() { }
 		
-		/// <summary>Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any) and then call the [When] methods (if any), ready for your test assertions</summary>
+#pragma warning disable xUnit1013 // XUnit Specific - Public method should be marked as test
+		/// <summary>
+		/// Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any)
+		/// and then call the [When] methods (if any), ready for your test assertions
+		/// </summary>
 		public virtual void Setup()
 		{
 			PrepareMocksDependenciesAndItemUnderTest();
 			ExecuteGivenMethods();
 			ExecuteWhenMethod();
 		}
+#pragma warning restore xUnit1013
 
 		private void ExecuteWhenMethod()
 		{
