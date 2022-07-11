@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace LeapingGorilla.Testing.NUnit.Composable
+namespace LeapingGorilla.Testing.Core.Composable
 {
     public static class TestComposer
     {

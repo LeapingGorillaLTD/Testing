@@ -1,11 +1,11 @@
 using System;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.Core.Composable;
-using LeapingGorilla.Testing.NUnit.Attributes;
-using LeapingGorilla.Testing.NUnit.Composable;
-using NUnit.Framework;
+using LeapingGorilla.Testing.XUnit.Attributes;
+using LeapingGorilla.Testing.XUnit.Composable;
+using Xunit;
 
-namespace LeapingGorilla.Testing.NUnit.Tests.Composable;
+namespace LeapingGorilla.Testing.XUnit.Tests.Composable;
 
 public class WhenTestingComposableBddHappyPath : ComposableTestingTheBehaviourOf
 {
@@ -38,18 +38,18 @@ public class WhenTestingComposableBddHappyPath : ComposableTestingTheBehaviourOf
 	[Then]
 	public void CheckTheThingWasCorrect()
 	{
-		Assert.Pass();
+		Assert.True(true);
 	}
 	
 	[Then]
 	public void AnotherThingWasCorrect()
 	{
-		Assert.Pass();
+		Assert.True(true);
 	}
 
 	[Then]
 	public void NotActuallyInvoked()
     {
-		Assert.Fail();
+		Assert.True(false);
     }
 }

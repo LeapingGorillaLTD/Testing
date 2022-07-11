@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using LeapingGorilla.Testing.Core.Attributes;
 
-namespace LeapingGorilla.Testing.NUnit.Composable
+namespace LeapingGorilla.Testing.Core.Composable
 {
     public class ComposedGivensAndWhen
     {
