@@ -14,7 +14,7 @@ namespace LeapingGorilla.Testing.XUnit
     /// If the test class does not derive from <see cref="ComposableTestingTheBehaviourOf"/>> this will default to all
     /// [Then] cases being run.
     /// Alternatively when the test class does derive from <see cref="ComposableTestingTheBehaviourOf"/> the discoverer
-    /// will execute the ComposeTest() method to discover the defined [Then] cases for the test and only include them.
+    /// will execute the ComposeTest() method to discover the defined [Then] cases for the test and only include those.
     /// 
     /// WARNING: Be careful if moving this. The type name and namespace is referenced from a string in
     /// <see cref="LeapingGorilla.Testing.XUnit.Attributes.ThenAttribute"/>

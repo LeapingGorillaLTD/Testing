@@ -26,24 +26,44 @@ namespace LeapingGorilla.Testing.Core.Composable
             ValidateAndAddThen(firstThen);
         }
 
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="anotherThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest Then(Action anotherThen)
         {
             ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="anotherThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest Then(Func<Task> anotherThen)
         {
             ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="anotherThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest And(Action anotherThen)
         {
             ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="anotherThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest And(Func<Task> anotherThen)
         {
             ValidateAndAddThen(anotherThen.Method);

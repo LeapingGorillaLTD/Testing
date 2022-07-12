@@ -19,7 +19,7 @@ namespace LeapingGorilla.Testing.Core.Composable
     ///
     /// Note: Given/When/Then methods must still be decorated with the corresponding attributes.
     /// </summary>
-    public static class TestComposer
+    public class TestComposer
     {
         /// <summary>
         /// Used by internal code to determine whether an invocation of a test ComposeTest() call is being done during
@@ -30,11 +30,21 @@ namespace LeapingGorilla.Testing.Core.Composable
         /// </summary>
         internal static bool ThrowOnValidationFailure { get; set; } = true;
         
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="firstGiven">The method to use as a Given</param>
+        /// <returns></returns>
         public static ComposedGivens Given(Action firstGiven)
         {
             return new ComposedGivens(firstGiven);
         }
         
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="firstGiven">The method to use as a Given</param>
+        /// <returns></returns>
         public static ComposedGivens Given(Func<Task> firstGiven)
         {
             return new ComposedGivens(firstGiven);

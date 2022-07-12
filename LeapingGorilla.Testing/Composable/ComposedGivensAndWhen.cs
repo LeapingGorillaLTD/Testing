@@ -25,11 +25,21 @@ namespace LeapingGorilla.Testing.Core.Composable
             _whenMethod = whenMethod;
         }
 
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="firstThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest Then(Action firstThen)
         {
             return new ComposedTest(_givenMethods, _whenMethod, firstThen.Method);
         }
         
+        /// <summary>
+        /// Defines a Then assertion method for the test being composed
+        /// </summary>
+        /// <param name="firstThen">The method to use as a Then action</param>
+        /// <returns></returns>
         public ComposedTest Then(Func<Task> firstThen)
         {
             return new ComposedTest(_givenMethods, _whenMethod, firstThen.Method);

@@ -11,11 +11,16 @@ namespace LeapingGorilla.Testing.Core.Composable
     {
         private readonly List<MethodInfo> _givenMethods = new List<MethodInfo>();
         
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="firstGiven">The method to use as a Given</param>
+        /// <returns></returns>
         internal ComposedGivens(Action firstGiven)
         {
             ValidateAndAddGiven(firstGiven.Method);
         }
-        
+
         internal ComposedGivens(Func<Task> firstGiven)
         {
             ValidateAndAddGiven(firstGiven.Method);
@@ -27,29 +32,54 @@ namespace LeapingGorilla.Testing.Core.Composable
             return this;
         }
         
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="anotherGiven">The method to use as a Given</param>
+        /// <returns></returns>
         public ComposedGivens Given(Func<Task> anotherGiven)
         {
             ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
 
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="anotherGiven">The method to use as a Given</param>
+        /// <returns></returns>
         public ComposedGivens And(Action anotherGiven)
         {
             ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
         
+        /// <summary>
+        /// Adds a Given precondition for the test being composed
+        /// </summary>
+        /// <param name="anotherGiven">The method to use as a Given</param>
+        /// <returns></returns>
         public ComposedGivens And(Func<Task> anotherGiven)
         {
             ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
 
+        /// <summary>
+        /// Specifies the when action for the test being composed
+        /// </summary>
+        /// <param name="whenAction">The method to use as the test's When action</param>
+        /// <returns></returns>
         public ComposedGivensAndWhen When(Action whenAction)
         {
             return new ComposedGivensAndWhen(_givenMethods, whenAction.Method);
         }
         
+        /// <summary>
+        /// Specifies the when action for the test being composed
+        /// </summary>
+        /// <param name="whenAction">The method to use as the test's When action</param>
+        /// <returns></returns>
         public ComposedGivensAndWhen When(Func<Task> whenAction)
         {
             return new ComposedGivensAndWhen(_givenMethods, whenAction.Method);
