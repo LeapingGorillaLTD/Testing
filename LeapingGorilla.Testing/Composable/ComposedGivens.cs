@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.Core.Exceptions;
 
 namespace LeapingGorilla.Testing.Core.Composable
 {
@@ -11,35 +13,35 @@ namespace LeapingGorilla.Testing.Core.Composable
         
         internal ComposedGivens(Action firstGiven)
         {
-            _givenMethods.Add(firstGiven.Method);
+            ValidateAndAddGiven(firstGiven.Method);
         }
         
         internal ComposedGivens(Func<Task> firstGiven)
         {
-            _givenMethods.Add(firstGiven.Method);
+            ValidateAndAddGiven(firstGiven.Method);
         }
         
         public ComposedGivens Given(Action anotherGiven)
         {
-            _givenMethods.Add(anotherGiven.Method);
+            ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
         
         public ComposedGivens Given(Func<Task> anotherGiven)
         {
-            _givenMethods.Add(anotherGiven.Method);
+            ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
 
         public ComposedGivens And(Action anotherGiven)
         {
-            _givenMethods.Add(anotherGiven.Method);
+            ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
         
         public ComposedGivens And(Func<Task> anotherGiven)
         {
-            _givenMethods.Add(anotherGiven.Method);
+            ValidateAndAddGiven(anotherGiven.Method);
             return this;
         }
 
@@ -51,6 +53,18 @@ namespace LeapingGorilla.Testing.Core.Composable
         public ComposedGivensAndWhen When(Func<Task> whenAction)
         {
             return new ComposedGivensAndWhen(_givenMethods, whenAction.Method);
+        }
+
+        private void ValidateAndAddGiven(MethodInfo methodInfo)
+        {
+            var hasGivenAttribute = methodInfo.IsDefined(typeof(GivenAttribute), true);
+
+            if (!hasGivenAttribute && TestComposer.ThrowOnValidationFailure)
+            {
+                throw new ComposedGivenMethodNotDecoratedWithGivenAttributeException(methodInfo.Name);
+            }
+            
+            _givenMethods.Add(methodInfo);
         }
     }
 }

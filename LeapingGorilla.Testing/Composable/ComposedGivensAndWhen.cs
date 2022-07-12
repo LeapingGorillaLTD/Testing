@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using LeapingGorilla.Testing.Core.Attributes;
+using LeapingGorilla.Testing.Core.Exceptions;
 
 namespace LeapingGorilla.Testing.Core.Composable
 {
@@ -10,10 +12,17 @@ namespace LeapingGorilla.Testing.Core.Composable
         private List<MethodInfo> _givenMethods = new List<MethodInfo>();
         private readonly MethodInfo _whenMethod;
         
-        internal ComposedGivensAndWhen(List<MethodInfo> givenMethods, MethodInfo whenAction)
+        internal ComposedGivensAndWhen(List<MethodInfo> givenMethods, MethodInfo whenMethod)
         {
+            var whenMethodHasWhenAttribute = whenMethod.IsDefined(typeof(WhenAttribute), true);
+
+            if (!whenMethodHasWhenAttribute && TestComposer.ThrowOnValidationFailure)
+            {
+                throw new ComposedWhenMethodNotDecoratedWithWhenAttributeException(whenMethod.Name);
+            }
+            
             _givenMethods = givenMethods;
-            _whenMethod = whenAction;
+            _whenMethod = whenMethod;
         }
 
         public ComposedTest Then(Action firstThen)

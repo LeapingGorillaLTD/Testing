@@ -1,46 +1,72 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using LeapingGorilla.Testing.Core.Exceptions;
 
 namespace LeapingGorilla.Testing.Core.Composable
 {
     public class ComposedTest
     {
+        private const string NUnitThenAttributeName = "LeapingGorilla.Testing.NUnit.Attributes.ThenAttribute";
+        private const string XUnitThenAttributeName = "LeapingGorilla.Testing.XUnit.Attributes.ThenAttribute";
+        
         private List<MethodInfo> _thenMethods = new List<MethodInfo>();
+        
+        internal IEnumerable<MethodInfo> GivenMethods { get; }
+        internal MethodInfo WhenMethod { get; }
+        internal IEnumerable<MethodInfo> ThenMethods => _thenMethods;
+        
         internal ComposedTest(List<MethodInfo> givenMethods, MethodInfo whenMethod, MethodInfo firstThen)
         {
             GivenMethods = givenMethods;
             WhenMethod = whenMethod;
-            _thenMethods.Add(firstThen);
+            
+            ValidateAndAddThen(firstThen);
         }
 
         public ComposedTest Then(Action anotherThen)
         {
-            _thenMethods.Add(anotherThen.Method);
+            ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
         public ComposedTest Then(Func<Task> anotherThen)
         {
-            _thenMethods.Add(anotherThen.Method);
+            ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
         public ComposedTest And(Action anotherThen)
         {
-            _thenMethods.Add(anotherThen.Method);
+            ValidateAndAddThen(anotherThen.Method);
             return this;
         }
         
         public ComposedTest And(Func<Task> anotherThen)
         {
-            _thenMethods.Add(anotherThen.Method);
+            ValidateAndAddThen(anotherThen.Method);
             return this;
         }
 
-        internal IEnumerable<MethodInfo> GivenMethods { get; }
-        internal MethodInfo WhenMethod { get; }
-        internal IEnumerable<MethodInfo> ThenMethods => _thenMethods;
+        private void ValidateAndAddThen(MethodInfo methodInfo)
+        {
+            // We have to check the attributes using a string comparison here as this code does not have visibility of
+            // the XUnit and NUnit [Then] attributes. If those attributes are renamed/moved without that change being
+            // reflected in the type name strings in this class, this validation will start failing.
+            var hasThenAttribute = methodInfo
+                .CustomAttributes
+                .Any(x => 
+                    x.AttributeType.FullName == NUnitThenAttributeName || 
+                    x.AttributeType.FullName == XUnitThenAttributeName);
+
+            if (!hasThenAttribute && TestComposer.ThrowOnValidationFailure)
+            {
+                throw new ComposedThenMethodNotDecoratedWithThenAttributeException(methodInfo.Name);
+            }
+            
+            _thenMethods.Add(methodInfo);
+        }
     }
 }

@@ -20,7 +20,9 @@ namespace LeapingGorilla.Testing.NUnit.Attributes
                 .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic)
                 .Single(x => x.Name == "ComposeTest");
 
+            TestComposer.ThrowOnValidationFailure = false;
             var composedTest = (ComposedTest)composeTestMethod.Invoke(Activator.CreateInstance(typeInfo.Type));
+            TestComposer.ThrowOnValidationFailure = true;
 
             if (composedTest == null)
             {
