@@ -32,7 +32,7 @@ namespace LeapingGorilla.Testing.Core
 		/// Stores any <see cref="Exception"/> that was thrown whilst calling the method
 		/// marked with a <see cref="WhenAttribute"/>.
 		/// </summary>
-		public Exception ThrownException { get; private set; }
+		public Exception ThrownException { get; private protected set; }
 
 		/// <summary>
 		/// Creates the manual dependencies. Override this method if you wish to manually specify the values of any field or property that you
@@ -56,23 +56,18 @@ namespace LeapingGorilla.Testing.Core
 
 		private void ExecuteWhenMethod()
 		{
-				// Check we don't have more than one [When] method
-			var whenMethods = GetMethodsWithAttribute(typeof(WhenAttribute)).ToList();
-			if (whenMethods.Count > 1)
-			{
-				throw new WhenMethodMayOnlyAppearOnceException(whenMethods.Select(m => m.Name));
-			}
+			var method = ValidateAndFetchWhenMethod();
 
-				// If we have no [When] methods then return
-			if (!whenMethods.Any())
+			if (method == null)
 			{
 				return;
 			}
 
-				// Single when method - invoke it after checking it's return and parameters
-			var method = whenMethods.Single();
+			ExecuteWhenMethod(method);
+		}
+		
+		private protected void ExecuteWhenMethod(MethodInfo method) {
 			var whenAttribute = (WhenAttribute)Attribute.GetCustomAttribute(method, typeof(WhenAttribute));
-
 
 			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
 			{
@@ -99,9 +94,27 @@ namespace LeapingGorilla.Testing.Core
 					throw;
 				}
 			}
-
 		}
-		
+
+		private MethodInfo ValidateAndFetchWhenMethod()
+		{
+			// Check we don't have more than one [When] method
+			var whenMethods = GetMethodsWithAttribute(typeof(WhenAttribute)).ToList();
+			if (whenMethods.Count > 1)
+			{
+				throw new WhenMethodMayOnlyAppearOnceException(whenMethods.Select(m => m.Name));
+			}
+
+			// If we have no [When] methods then return
+			if (!whenMethods.Any())
+			{
+				return null;
+			}
+
+			// Single when method - invoke it after checking it's return and parameters
+			return whenMethods.Single();
+		}
+
 		private void ExecuteGivenMethods()
 		{
 			var givenMethods = GetMethodsWithAttribute(typeof(GivenAttribute));
@@ -122,7 +135,7 @@ namespace LeapingGorilla.Testing.Core
 			}
 		}
 
-		private void InvokeMethodAsVoidOrTask(MethodInfo method)
+		private protected void InvokeMethodAsVoidOrTask(MethodInfo method)
 		{
 			if (method.ReturnType == typeof(Task))
 			{
@@ -142,7 +155,7 @@ namespace LeapingGorilla.Testing.Core
 		/// <exception cref="NoMatchingConstructorFoundException">Thrown if no constructor can be found on the [ItemUnderTest] that matches the number of [Dependency] fields/properties</exception>
 		/// <exception cref="DependencyMismatchException">Thrown if a [Dependency] cannot be found for a constructor parameter when one is expected.</exception>
 		/// <exception cref="NoItemUnderTestException">Thrown if there are fields/properties marked with [Dependency] but none with [ItemUnderTest]</exception>
-		private void PrepareMocksDependenciesAndItemUnderTest()
+		private protected void PrepareMocksDependenciesAndItemUnderTest()
 		{
 				// Create a fast accessor onto the test class
 			var accessor = TypeAccessor.Create(GetType(), true);

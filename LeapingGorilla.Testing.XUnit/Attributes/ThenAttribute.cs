@@ -17,6 +17,7 @@
 using System;
 using LeapingGorilla.Testing.Core.Attributes;
 using Xunit;
+using Xunit.Sdk;
 
 namespace LeapingGorilla.Testing.XUnit.Attributes
 {
@@ -25,6 +26,7 @@ namespace LeapingGorilla.Testing.XUnit.Attributes
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     [IgnoreXunitAnalyzersRule1013]
+	[XunitTestCaseDiscoverer(typeName:"LeapingGorilla.Testing.XUnit.ThenTestCaseDiscoverer", assemblyName: "LeapingGorilla.Testing.XUnit")]
 	public sealed class ThenAttribute : FactAttribute
 	{
 	}
