@@ -10,6 +10,17 @@ namespace LeapingGorilla.Testing.XUnit.Composable
     /// </summary>
     public abstract class ComposableTestingTheBehaviourOf : ComposableTestingTheBehaviourOfBase
     {
+        /// <summary>
+        /// Performs setup for this instance - this will prepare all mocks and request the test composition via the
+        /// ComposeTest() abstract method. Following this it will call the [Given] methods (if any) and then call the
+        /// [When] methods (if any). On completion the instance will be ready for the [Then] methods defined in the test
+        /// composition to be executed.
+        /// </summary>
+        /// <param name="shouldSetup">
+        /// Should we perform the setup step? Pass false to skip setup. If you skip setup you will
+        /// need to implement it yourself by calling the <see cref="ComposableTestingTheBehaviourOfBase.Setup">base.Setup()</see>
+        /// method.
+        /// </param>
         protected ComposableTestingTheBehaviourOf(bool shouldSetup = true)
         {
             if (shouldSetup)

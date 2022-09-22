@@ -22,7 +22,14 @@ namespace LeapingGorilla.Testing.NUnit.Composable
 
         public bool IsMatch(Type type, MethodInfo method)
         {
-            return _composedThens.Any(x => x == method);
+            // HACK:
+            // We can't use a == or .Equals() to compare MethodInfo instances here even though this should be correct
+            // It is not exactly the same as this issue according to the provided repro but looks very similar
+            // https://github.com/dotnet/runtime/issues/6798.
+            // MethodHandle represents a pointer to the actual method in memory and it remains equal even if the
+            // MethodInfo instances themselves don't evaluate as equal.
+            
+            return _composedThens.Any(x => x.MethodHandle == method.MethodHandle);
         }
     }
 }
