@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using LeapingGorilla.Testing.Core;
 using LeapingGorilla.Testing.Core.Composable;
+using LeapingGorilla.Testing.Core.Extensions;
+using LeapingGorilla.Testing.XUnit.Attributes;
 using LeapingGorilla.Testing.XUnit.Composable;
+using LeapingGorilla.Testing.XUnit.XunitExtensions;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
@@ -27,32 +32,49 @@ namespace LeapingGorilla.Testing.XUnit
         {
             _messageSink = messageSink;
         }
-        
-        public IEnumerable<IXunitTestCase> Discover(ITestFrameworkDiscoveryOptions discoveryOptions, ITestMethod testMethod,
+
+        public IEnumerable<IXunitTestCase> Discover(
+            ITestFrameworkDiscoveryOptions discoveryOptions,
+            ITestMethod testMethod,
             IAttributeInfo factAttribute)
         {
             var testClassType = testMethod.TestClass.Class.ToRuntimeType();
             var testClassUsesComposablePattern = testClassType.IsSubclassOf(typeof(ComposableTestingTheBehaviourOf));
 
-            var cases = new List<IXunitTestCase>();
+            IEnumerable<MethodInfo> composedThenMethods = null;
             
             if (testClassUsesComposablePattern)
             {
                 TestComposer.ThrowOnValidationFailure = false;
-                
+
                 var testClassInstance = Activator.CreateInstance(testClassType) as ComposableTestingTheBehaviourOf;
-                
+
                 var composedTest = testClassInstance.ComposeTest();
                 TestComposer.ThrowOnValidationFailure = true;
 
                 if (composedTest.ThenMethods.All(x => x.Name != testMethod.Method.Name))
                 {
-                    return cases;
+                    return Array.Empty<IXunitTestCase>();
                 }
+
+                composedThenMethods = composedTest.ThenMethods;
             }
-            
-            cases.Add(new XunitTestCase(_messageSink, TestMethodDisplay.Method, TestMethodDisplayOptions.None, testMethod));
-            return cases;
+
+            return new[]
+            {
+                new LeapingGorillaTestCase(
+                    _messageSink,
+                    TestMethodDisplay.Method,
+                    TestMethodDisplayOptions.None,
+                    testMethod,
+                    composedThenMethods ?? DiscoverAllThenMethods(testClassType))
+            };
+        }
+
+        private IEnumerable<MethodInfo> DiscoverAllThenMethods(Type testClassType)
+        {
+            return testClassType
+                .GetMethodsWithAttribute(typeof(ThenAttribute));
         }
     }
 }
