@@ -14,6 +14,7 @@
    limitations under the License.
 */
 
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core;
 using NUnit.Framework;
 
@@ -25,9 +26,9 @@ namespace LeapingGorilla.Testing.NUnit
 	{
         /// <summary>Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any) and then call the [When] methods (if any), ready for your test assertions</summary>
 		[OneTimeSetUp]
-		public override void Setup()
+		public override async Task SetupAsync()
 		{
-			base.Setup();
+			await base.SetupAsync();
 		}
 	}
 }

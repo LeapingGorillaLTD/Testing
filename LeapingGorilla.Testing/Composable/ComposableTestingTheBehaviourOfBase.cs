@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace LeapingGorilla.Testing.Core.Composable
 {
@@ -10,20 +11,20 @@ namespace LeapingGorilla.Testing.Core.Composable
     /// </summary>
     public abstract class ComposableTestingTheBehaviourOfBase : WhenTestingTheBehaviourOfBase
     {
-        public override void Setup()
+        public override async Task SetupAsync()
         {
             var composedTest = ComposeTest();
 
             PrepareMocksDependenciesAndItemUnderTest();
-            ExecuteComposedGivenMethods(composedTest.GivenMethods);
-            ExecuteWhenMethod(composedTest.WhenMethod);
+            await ExecuteComposedGivenMethods(composedTest.GivenMethods);
+            await ExecuteWhenMethod(composedTest.WhenMethod);
         }
 
-        private void ExecuteComposedGivenMethods(IEnumerable<MethodInfo> composedTestGivens)
+        private async Task ExecuteComposedGivenMethods(IEnumerable<MethodInfo> composedTestGivens)
         {
             foreach (var method in composedTestGivens)
             {
-                InvokeMethodAsVoidOrTask(method);
+                await InvokeMethodAsVoidOrTask(method);
             }
         }
 

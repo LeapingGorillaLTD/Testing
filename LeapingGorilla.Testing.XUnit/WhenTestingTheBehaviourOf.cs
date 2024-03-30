@@ -14,13 +14,17 @@
    limitations under the License.
 */
 
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core;
+using Xunit;
 
 namespace LeapingGorilla.Testing.XUnit
 {
     /// <summary>Base class used for writing BDD style Given/When/Then unit tests for a component with simplified mocking semantics</summary>
-    public abstract class WhenTestingTheBehaviourOf : WhenTestingTheBehaviourOfBase
+    public abstract class WhenTestingTheBehaviourOf : WhenTestingTheBehaviourOfBase, IAsyncLifetime
 	{
+        private readonly bool _shouldSetup;
+
         /// <summary>
         /// Performs setup for this instance - this will prepare all mocks, call the [Given]
         /// methods (if any) and then call the [When] methods (if any), ready for your test
@@ -28,15 +32,25 @@ namespace LeapingGorilla.Testing.XUnit
         /// </summary>
         /// <param name="shouldSetup">
         /// Should we perform the setup step? Pass false to skip setup. If you skip setup you will
-        /// need to implement it yourself by calling the <see cref="WhenTestingTheBehaviourOfBase.Setup">base.Setup()</see>
+        /// need to implement it yourself by calling the <see cref="WhenTestingTheBehaviourOfBase.SetupAsync">base.SetupAsync()</see>
         /// method.
         /// </param>
         protected WhenTestingTheBehaviourOf(bool shouldSetup = true)
         {
-            if (shouldSetup)
+            _shouldSetup = shouldSetup;
+        }
+
+        public virtual async Task InitializeAsync()
+        {
+            if (_shouldSetup)
             {
-                base.Setup();
+                await SetupAsync();
             }
         }
-	}
+
+        public virtual Task DisposeAsync()
+        {
+            return Task.CompletedTask;
+        }
+    }
 }

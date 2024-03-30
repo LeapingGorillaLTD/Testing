@@ -43,18 +43,28 @@ namespace LeapingGorilla.Testing.Core
 		
 #pragma warning disable xUnit1013 // XUnit Specific - Public method should be marked as test
 		/// <summary>
+		/// Obsolete method retained for backwards compatibility.
+		/// Invokes SetupAsync() synchronously.
+		/// </summary>
+		[Obsolete("Use SetupAsync() instead. Synchronous method relies on Task.Wait() which blocks the thread")]
+		public virtual void Setup()
+		{
+			SetupAsync().Wait();
+		}
+		
+		/// <summary>
 		/// Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any)
 		/// and then call the [When] methods (if any), ready for your test assertions
 		/// </summary>
-		public virtual void Setup()
+		public virtual async Task SetupAsync()
 		{
 			PrepareMocksDependenciesAndItemUnderTest();
-			ExecuteGivenMethods();
-			ExecuteWhenMethod();
+			await ExecuteGivenMethods();
+			await ExecuteWhenMethod();
 		}
 #pragma warning restore xUnit1013
 
-		private void ExecuteWhenMethod()
+		private async Task ExecuteWhenMethod()
 		{
 			var method = ValidateAndFetchWhenMethod();
 
@@ -63,10 +73,10 @@ namespace LeapingGorilla.Testing.Core
 				return;
 			}
 
-			ExecuteWhenMethod(method);
+			await ExecuteWhenMethod(method);
 		}
 		
-		private protected void ExecuteWhenMethod(MethodInfo method) {
+		private protected async Task ExecuteWhenMethod(MethodInfo method) {
 			var whenAttribute = (WhenAttribute)Attribute.GetCustomAttribute(method, typeof(WhenAttribute));
 
 			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
@@ -81,7 +91,7 @@ namespace LeapingGorilla.Testing.Core
 
 			try
 			{
-				InvokeMethodAsVoidOrTask(method);
+				await InvokeMethodAsVoidOrTask(method);
 			}
 			catch (Exception ex)
 			{
@@ -115,7 +125,7 @@ namespace LeapingGorilla.Testing.Core
 			return whenMethods.Single();
 		}
 
-		private void ExecuteGivenMethods()
+		private async Task ExecuteGivenMethods()
 		{
 			var givenMethods = GetMethodsWithAttribute(typeof(GivenAttribute));
 
@@ -131,16 +141,16 @@ namespace LeapingGorilla.Testing.Core
 					throw new GivenMethodMayNotHaveParametersException(method.Name);
 				}
 
-				InvokeMethodAsVoidOrTask(method);
+				await InvokeMethodAsVoidOrTask(method);
 			}
 		}
 
-		private protected void InvokeMethodAsVoidOrTask(MethodInfo method)
+		private protected async Task InvokeMethodAsVoidOrTask(MethodInfo method)
 		{
 			if (method.ReturnType == typeof(Task))
 			{
 				var task = (Task)method.Invoke(this, null);
-				task.Wait();
+				await task;
 			}
 			else
 			{
@@ -266,7 +276,8 @@ namespace LeapingGorilla.Testing.Core
 			// Look for Public or Internal Constructors
 			var constructors = itemUnderTestType
                 .GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(c => c.IsPublic || c.IsAssembly);
+                .Where(c => c.IsPublic || c.IsAssembly)
+                .ToArray();
 
 			if (constructors.All(c => c.IsPrivate))
 			{

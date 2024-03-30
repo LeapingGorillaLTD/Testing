@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.Core.Exceptions;
 using LeapingGorilla.Testing.XUnit.Attributes;
@@ -26,22 +27,17 @@ namespace LeapingGorilla.Testing.XUnit.Tests
 	{
 		private Exception _setupException;
 
-        public WhenTestingSetupWithAWhenMethodThatHasAReturnType() : base(false)
+        public override async Task SetupAsync()
         {
-            Setup();
+	        try
+	        {
+		        await base.SetupAsync();
+	        }
+	        catch (Exception ex)
+	        {
+		        _setupException = ex;
+	        }
         }
-
-		public override void Setup()
-		{
-			try
-			{
-				base.Setup();
-			}
-			catch (Exception ex)
-			{
-				_setupException = ex;
-			}
-		}
 
 		[When]
 		public int BadWhenWithReturnType()

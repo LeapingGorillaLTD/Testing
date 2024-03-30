@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Composable;
 using LeapingGorilla.Testing.NUnit.Attributes;
 using NUnit.Framework;
@@ -14,9 +15,9 @@ namespace LeapingGorilla.Testing.NUnit.Composable
     public abstract class ComposableTestingTheBehaviourOf : ComposableTestingTheBehaviourOfBase
     {
         [OneTimeSetUp]
-        public override void Setup()
+        public override async Task SetupAsync()
         {
-            base.Setup();
+            await base.SetupAsync();
         }
     }
 }

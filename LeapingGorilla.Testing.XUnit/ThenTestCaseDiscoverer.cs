@@ -39,6 +39,7 @@ namespace LeapingGorilla.Testing.XUnit
             if (testClassUsesComposablePattern)
             {
                 TestComposer.ThrowOnValidationFailure = false;
+                
                 var testClassInstance = Activator.CreateInstance(testClassType) as ComposableTestingTheBehaviourOf;
                 
                 var composedTest = testClassInstance.ComposeTest();
