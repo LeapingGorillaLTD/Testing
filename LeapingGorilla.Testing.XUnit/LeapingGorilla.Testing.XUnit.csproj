@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Version>6.0.0</Version>
+        <Version>6.0.1</Version>
         <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction based on the XUnit testing library.
 
  We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
