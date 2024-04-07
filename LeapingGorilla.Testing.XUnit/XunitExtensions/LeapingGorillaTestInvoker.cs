@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading;
 using Castle.DynamicProxy;
 using LeapingGorilla.Testing.XUnit.Composable;
+using LeapingGorilla.Testing.XUnit.Exceptions;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
@@ -38,6 +39,10 @@ namespace LeapingGorilla.Testing.XUnit.XunitExtensions
             {
                 if (!TestInstanceCache.ContainsKey(TestClass))
                 {
+                    if (TestClass.IsSealed)
+                    {
+                        throw new TestClassMustNotBeSealedException(TestClass.Name);
+                    }
                     var interceptor = new LeapingGorillaAsyncLifetimeInterceptor(lgTestCase.AllTestMethodsInClass);
                     var proxy = Generator.CreateClassProxy(TestClass, interceptor);
                     TestInstanceCache.TryAdd(
