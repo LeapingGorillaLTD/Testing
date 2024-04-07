@@ -15,7 +15,6 @@
 */
 
 using System;
-using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.Core.Exceptions;
 using LeapingGorilla.Testing.XUnit.Attributes;
@@ -37,11 +36,16 @@ namespace LeapingGorilla.Testing.XUnit.Tests
 
 		private Exception _setupException;
 
-        public override async Task SetupAsync()
+        public WhenItemUnderTestHasNoPublicConstructor() : base(false)
+        {
+			Setup();
+        }
+
+        public new void Setup()
 		{
 			try
 			{
-				await base.SetupAsync();
+				base.Setup();
 			}
 			catch (Exception ex)
 			{

@@ -48,9 +48,9 @@ namespace LeapingGorilla.Testing.Core
 		/// Invokes SetupAsync() synchronously.
 		/// </summary>
 		[Obsolete("Use SetupAsync() instead. Synchronous method relies on Task.Wait() which blocks the thread")]
-		public virtual void Setup()
+		public void Setup()
 		{
-			SetupAsync().Wait();
+			SetupAsync().GetAwaiter().GetResult();
 		}
 		
 		/// <summary>
