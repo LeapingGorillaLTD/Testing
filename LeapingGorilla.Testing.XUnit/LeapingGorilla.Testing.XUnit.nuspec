@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
         <id>LeapingGorilla.Testing.XUnit</id>
-        <version>6.0.1</version>
+        <version>7.0.0</version>
         <title>LeapingGorilla.Testing.XUnit</title>
         <authors>Leaping Gorilla LTD</authors>
         <owners>Leaping Gorilla LTD</owners>
@@ -24,24 +24,24 @@ From these needs LeapingGorilla.Testing was born.</description>
         <releaseNotes></releaseNotes>
         <copyright>Copyright Leaping Gorilla LTD ©  2013-2021</copyright>
         <dependencies>
-            <group targetFramework="net6.0">
+            <group targetFramework="net8.0">
                 <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="microsoft.csharp" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="nsubstitute" version="4.3.0" exclude="Build,Analyzers" />
-                <dependency id="XUnit" version="2.4.1" exclude="Build,Analyzers" />
+                <dependency id="nsubstitute" version="5.1.0" exclude="Build,Analyzers" />
+                <dependency id="XUnit" version="2.7.0" exclude="Build,Analyzers" />
             </group>
             <group targetFramework=".NETStandard2.0">
                 <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="microsoft.csharp" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="nsubstitute" version="4.3.0" exclude="Build,Analyzers" />
-                <dependency id="XUnit" version="2.4.1" exclude="Build,Analyzers" />
+                <dependency id="nsubstitute" version="5.1.0" exclude="Build,Analyzers" />
+                <dependency id="XUnit" version="2.7.0" exclude="Build,Analyzers" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\net6.0\*.dll" target="lib\net6.0" />
+        <file src="bin\Release\net8.0\*.dll" target="lib\net8.0" />
         <file src="bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
     </files>
 </package>
