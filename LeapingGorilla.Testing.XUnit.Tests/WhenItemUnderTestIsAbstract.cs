@@ -36,17 +36,23 @@ namespace LeapingGorilla.Testing.XUnit.Tests
             Setup();
         }
 
-		public override void Setup()
-		{
+#pragma warning disable xUnit1013 // This method doesn't need to be marked as Fact
+        public new void Setup()
+        {
 			try
 			{
+#pragma warning disable CS0618 // Type or member is obsolete
+				// Intentionally using obsolete method to verify
+				// existing behaviour isn't broken
 				base.Setup();
+#pragma warning restore CS0618 // Type or member is obsolete
 			}
 			catch (Exception ex)
 			{
 				_setupException = ex;
 			}
 		}
+#pragma warning restore xUnit1013
 
 		[Then]
 		public void SetupShouldThrowAnException()

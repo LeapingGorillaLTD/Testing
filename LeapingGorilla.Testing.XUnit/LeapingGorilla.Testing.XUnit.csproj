@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
-        <Version>6.0.1</Version>
+        <Version>7.0.0</Version>
         <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction based on the XUnit testing library.
 
  We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
@@ -24,11 +23,12 @@ From these needs LeapingGorilla.Testing was born.</Description>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageId>LeapingGorilla.Testing.XUnit</PackageId>
         <Product>LeapingGorilla.Testing.XUnit</Product>
+        <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="xunit" Version="2.4.1" />
-        <PackageReference Include="NSubstitute" Version="4.3.0" />
+        <PackageReference Include="xunit" Version="2.7.0" />
+        <PackageReference Include="NSubstitute" Version="5.1.0" />
     </ItemGroup>
 
     <ItemGroup>

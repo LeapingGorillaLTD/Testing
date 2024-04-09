@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.Core.Exceptions;
 using LeapingGorilla.Testing.XUnit.Attributes;
@@ -33,16 +34,11 @@ namespace LeapingGorilla.Testing.XUnit.Tests
 		[Dependency]
 		public IMockEventRaiser ThisShouldBeAMockLogger;
 
-        public WhenTestingDependencyInjectionWithWrongDependencies() : base(false)
-        {
-            Setup();
-        }
-
-		public override void Setup()
+		public override async Task SetupAsync()
 		{
 			try
 			{
-				base.Setup();
+				await base.SetupAsync();
 			}
 			catch (Exception ex)
 			{

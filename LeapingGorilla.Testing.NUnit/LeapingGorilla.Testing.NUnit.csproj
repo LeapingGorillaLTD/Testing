@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0;</TargetFrameworks>
-      <Version>6.0.1</Version>
+      <Version>7.0.0</Version>
       <Description>BDD style testing framework to allow unit testing with automated mocking, dependency injection and minimum friction based on the NUnit testing library.
 
  We at Leaping Gorilla strive to remove as much friction as possible from our testing methodology. To that end we wanted a drop dead simple way to create unit tests that adhered to a few core principles:
@@ -24,11 +23,12 @@ From these needs LeapingGorilla.Testing was born.</Description>
       <PackageId>LeapingGorilla.Testing</PackageId>
       <Product>LeapingGorilla.Testing</Product>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+      <TargetFrameworks>net6.0;net8.0;net462</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="NUnit" Version="3.13.2" />
-      <PackageReference Include="NSubstitute" Version="4.3.0" />
+      <PackageReference Include="NUnit" Version="4.1.0" />
+      <PackageReference Include="NSubstitute" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.XUnit.Attributes;
 using LeapingGorilla.Testing.XUnit.Tests.Mocks;
@@ -46,11 +47,11 @@ namespace LeapingGorilla.Testing.XUnit.Tests
 		[Mock]
 		protected IMockLogger ProtectedPropertyMock { get; set; }
 
-		public override void Setup()
+		public override async Task SetupAsync()
 		{
 			try
 			{
-				base.Setup();
+				await base.SetupAsync();
 			}
 			catch (Exception ex)
 			{

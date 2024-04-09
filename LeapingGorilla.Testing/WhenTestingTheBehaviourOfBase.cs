@@ -21,6 +21,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using LeapingGorilla.Testing.Core.Attributes;
 using LeapingGorilla.Testing.Core.Exceptions;
+using LeapingGorilla.Testing.Core.Extensions;
 using TypeAccessor = LeapingGorilla.Testing.Core.FastMember.TypeAccessor;
 
 namespace LeapingGorilla.Testing.Core
@@ -43,18 +44,28 @@ namespace LeapingGorilla.Testing.Core
 		
 #pragma warning disable xUnit1013 // XUnit Specific - Public method should be marked as test
 		/// <summary>
+		/// Obsolete method retained for backwards compatibility.
+		/// Invokes SetupAsync() synchronously.
+		/// </summary>
+		[Obsolete("Use SetupAsync() instead. Synchronous method relies on Task.Wait() which blocks the thread")]
+		public void Setup()
+		{
+			SetupAsync().GetAwaiter().GetResult();
+		}
+		
+		/// <summary>
 		/// Performs setup for this instance - this will prepare all mocks, call the [Given] methods (if any)
 		/// and then call the [When] methods (if any), ready for your test assertions
 		/// </summary>
-		public virtual void Setup()
+		public virtual async Task SetupAsync()
 		{
 			PrepareMocksDependenciesAndItemUnderTest();
-			ExecuteGivenMethods();
-			ExecuteWhenMethod();
+			await ExecuteGivenMethods();
+			await ExecuteWhenMethod();
 		}
 #pragma warning restore xUnit1013
 
-		private void ExecuteWhenMethod()
+		private async Task ExecuteWhenMethod()
 		{
 			var method = ValidateAndFetchWhenMethod();
 
@@ -63,10 +74,10 @@ namespace LeapingGorilla.Testing.Core
 				return;
 			}
 
-			ExecuteWhenMethod(method);
+			await ExecuteWhenMethod(method);
 		}
 		
-		private protected void ExecuteWhenMethod(MethodInfo method) {
+		private protected async Task ExecuteWhenMethod(MethodInfo method) {
 			var whenAttribute = (WhenAttribute)Attribute.GetCustomAttribute(method, typeof(WhenAttribute));
 
 			if (method.ReturnType != typeof(void) && method.ReturnType != typeof(Task))
@@ -81,7 +92,7 @@ namespace LeapingGorilla.Testing.Core
 
 			try
 			{
-				InvokeMethodAsVoidOrTask(method);
+				await InvokeMethodAsVoidOrTask(method);
 			}
 			catch (Exception ex)
 			{
@@ -115,7 +126,7 @@ namespace LeapingGorilla.Testing.Core
 			return whenMethods.Single();
 		}
 
-		private void ExecuteGivenMethods()
+		private async Task ExecuteGivenMethods()
 		{
 			var givenMethods = GetMethodsWithAttribute(typeof(GivenAttribute));
 
@@ -131,16 +142,16 @@ namespace LeapingGorilla.Testing.Core
 					throw new GivenMethodMayNotHaveParametersException(method.Name);
 				}
 
-				InvokeMethodAsVoidOrTask(method);
+				await InvokeMethodAsVoidOrTask(method);
 			}
 		}
 
-		private protected void InvokeMethodAsVoidOrTask(MethodInfo method)
+		private protected async Task InvokeMethodAsVoidOrTask(MethodInfo method)
 		{
 			if (method.ReturnType == typeof(Task))
 			{
 				var task = (Task)method.Invoke(this, null);
-				task.Wait();
+				await task;
 			}
 			else
 			{
@@ -158,7 +169,7 @@ namespace LeapingGorilla.Testing.Core
 		private protected void PrepareMocksDependenciesAndItemUnderTest()
 		{
 				// Create a fast accessor onto the test class
-			var accessor = TypeAccessor.Create(GetType(), true);
+			var accessor = TypeAccessor.Create(GetTestClassType(), true);
 
 				// Get and validate the item under test
 			var itemUnderTest = GetPropertiesWithAttribute(typeof(ItemUnderTestAttribute)).Select(pi => new { Type = pi.PropertyType, pi.Name })
@@ -241,19 +252,35 @@ namespace LeapingGorilla.Testing.Core
 
 		private IEnumerable<PropertyInfo> GetPropertiesWithAttribute(Type attributeType)
 		{
-			return GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(prop => prop.IsDefined(attributeType, false));
+			return GetTestClassType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(prop => prop.IsDefined(attributeType, false));
+		}
+
+		private Type GetTestClassType()
+		{
+			var type = GetType();
+			
+			// Castle dynamic proxies are used in the custom xUnit runner code
+			// which uses a test class instance per LG BDD test instead of a separate
+			// instance per [Then] method.
+			// When using dynamic proxies GetType() returns the dynamic proxy type and this
+			// breaks behaviours such as setting private [Mock] properties so we need to return
+			// the original test class which is the base class of the proxy
+			if (type.Namespace == "Castle.Proxies")
+			{
+				type = type.BaseType;
+			}
+
+			return type;
 		}
 
 		private IEnumerable<FieldInfo> GetFieldsWithAttribute(Type attributeType)
 		{
-			return GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(prop => prop.IsDefined(attributeType, false));
+			return GetTestClassType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(prop => prop.IsDefined(attributeType, false));
 		}
-		
+
 		private IEnumerable<MethodInfo> GetMethodsWithAttribute(Type attributeType)
 		{
-			return GetType()
-				.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-				.Where(mi => mi.IsDefined(attributeType, true));
+			return GetTestClassType().GetMethodsWithAttribute(attributeType);
 		}
 
 		private static ConstructorInfo GetPreferredConstructor(Type itemUnderTestType, ICollection<Dependency> dependencies)
@@ -266,7 +293,8 @@ namespace LeapingGorilla.Testing.Core
 			// Look for Public or Internal Constructors
 			var constructors = itemUnderTestType
                 .GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(c => c.IsPublic || c.IsAssembly);
+                .Where(c => c.IsPublic || c.IsAssembly)
+                .ToArray();
 
 			if (constructors.All(c => c.IsPrivate))
 			{
