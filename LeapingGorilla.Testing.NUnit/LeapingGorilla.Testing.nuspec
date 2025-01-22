@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
         <id>LeapingGorilla.Testing</id>
-        <version>7.0.0</version>
+        <version>7.1.0</version>
         <authors>Leaping Gorilla LTD</authors>
         <license type="expression">Apache-2.0</license>
         <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
@@ -21,32 +21,24 @@ From these needs LeapingGorilla.Testing was born.</description>
         <copyright>Copyright Leaping Gorilla LTD ©  2013-2021</copyright>
         <repository type="Git" url="https://github.com/LeapingGorillaLTD/Testing" />
         <dependencies>
-            <group targetFramework="net6.0">
-                <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="microsoft.csharp" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="nsubstitute" version="5.1.0" exclude="Build,Analyzers" />
-                <dependency id="NUnit" version="4.1.0" exclude="Build,Analyzers" />
-              </group>
             <group targetFramework="net8.0">
                 <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="microsoft.csharp" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="nsubstitute" version="5.1.0" exclude="Build,Analyzers" />
-                <dependency id="NUnit" version="4.1.0" exclude="Build,Analyzers" />
+                <dependency id="nsubstitute" version="5.3.0" exclude="Build,Analyzers" />
+                <dependency id="NUnit" version="4.3.2" exclude="Build,Analyzers" />
             </group>
-              <group targetFramework="net462">
+            <group targetFramework="net462">
                 <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="System.Reflection.Emit.Lightweight" version="4.7.0" exclude="Build,Analyzers" />
                 <dependency id="microsoft.csharp" version="4.7.0" exclude="Build,Analyzers" />
-                <dependency id="nsubstitute" version="5.1.0" exclude="Build,Analyzers" />
-                <dependency id="NUnit" version="4.1.0" exclude="Build,Analyzers" />
-              </group>
+                <dependency id="nsubstitute" version="5.3.0" exclude="Build,Analyzers" />
+                <dependency id="NUnit" version="4.3.2" exclude="Build,Analyzers" />
+            </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\net6.0\*.dll" target="lib\net6.0" />
         <file src="bin\Release\net8.0\*.dll" target="lib\net8.0" />
-        <file src="bin\Release\net462\*.dll" target="lib\net462" />
+        <file src="bin\Release\net462\LeapingGorilla.*.dll" target="lib\net462" />
     </files>
 </package>
